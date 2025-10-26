@@ -1144,6 +1144,8 @@ h1:last-of-type {
         color: white;
         cursor: pointer;
     }
+
+
     
     .image-container img {
         width: 100px;
@@ -1344,6 +1346,8 @@ h1:last-of-type {
     .player-brand {
         display: none !important;
     }
+
+
     
     .volume-control {
         display: none !important;
@@ -1488,5 +1492,47 @@ h1:last-of-type {
     
     .beats {
         grid-template-columns: repeat(2, 1fr); /* В ландшафте 2 колонки */
+    }
+}
+
+/* ФИКС ДЛЯ ФИЛЬТРАЦИИ НА МОБИЛЬНЫХ */
+@media (max-width: 576px) {
+    /* Полное удаление скрытых элементов из потока */
+    .image-info-container[style*="display: none"] {
+        display: none !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        transform: scale(0) !important;
+        visibility: hidden !important;
+    }
+    
+    .image-info-container[style*="display: flex"] {
+        display: flex !important;
+        opacity: 1 !important;
+        height: auto !important;
+        min-height: auto !important;
+        transform: scale(1) !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
+        margin-bottom: 20px !important; /* Сохраняем отступ между видимыми элементами */
+    }
+    
+    /* Перестраиваем сетку для мобильных */
+    .beats {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important; /* Убираем grid gap, используем margin-bottom */
+    }
+    
+    .image-info-container {
+        width: 100% !important;
+        max-width: 400px !important;
+        transition: all 0.3s ease !important;
     }
 }
