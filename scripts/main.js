@@ -14,429 +14,792 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.icon').forEach(function(icon) {
-    icon.addEventListener('click', function() {
-      let url = icon.getAttribute('data-url');
-      if (url) {
-        window.location.href = url;
-      }
-    });
-  });
-});
 
-// Анимированное меню с корректировкой позиции
+
 document.addEventListener("DOMContentLoaded", function() {
     const links = [...document.querySelectorAll(".animated-menu a")];
     const light = document.querySelector(".animated-menu .tubelight");
 
-    // Корректировка смещения (поэкспериментируй с этим значением)
-    const offsetCorrection = 0; // пиксели
+    const offsetCorrection = 0;
 
-    // Инициализация позиции подсветки
-    if (links[0].classList.contains("active")) {
-        const firstLink = links[0];
-        const linkRect = firstLink.getBoundingClientRect();
-        const menuRect = firstLink.closest('.animated-menu').getBoundingClientRect();
+    let ticking = false;
+    let ignoreScrollUpdate = false;
+    let scrollTimeout;
+
+    function updateLightPosition(activeLink) {
+        const linkRect = activeLink.getBoundingClientRect();
+        const menuRect = activeLink.closest('.animated-menu').getBoundingClientRect();
         const linkCenter = linkRect.left - menuRect.left + linkRect.width / 2;
         light.style.left = `${linkCenter + offsetCorrection}px`;
     }
 
-    links.forEach((link) => {
+    if (links[0].classList.contains("active")) {
+        updateLightPosition(links[0]);
+    }
+
+    links.forEach((link, index) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             
-            // Убираем active со всех ссылок
+            ignoreScrollUpdate = true;
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                ignoreScrollUpdate = false;
+            }, 1000);
+            
             links.forEach(l => l.classList.remove("active"));
-            // Добавляем active к текущей
             link.classList.add("active");
             
-            // Правильный расчет позиции подсветки с корректировкой
-            const linkRect = link.getBoundingClientRect();
-            const menuRect = link.closest('.animated-menu').getBoundingClientRect();
-            const linkCenter = linkRect.left - menuRect.left + linkRect.width / 2;
-            light.style.left = `${linkCenter + offsetCorrection}px`;
+            updateLightPosition(link);
+            
+            switch(index) {
+                case 0:
+                    scrollToTop();
+                    break;
+                case 1:
+                    scrollToSection('beats');
+                    break;
+                case 2:
+                    scrollToSection('price');
+                    break;
+                case 3:
+                    scrollToContact();
+                    break;
+            }
         });
     });
+
+    function updateMenuOnScroll() {
+        if (ignoreScrollUpdate) {
+            ticking = false;
+            return;
+        }
+        
+        const currentSection = getCurrentSection();
+        
+        if (links[currentSection] && !links[currentSection].classList.contains('active')) {
+            links.forEach(l => l.classList.remove("active"));
+            links[currentSection].classList.add("active");
+            updateLightPosition(links[currentSection]);
+        }
+        
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking && !ignoreScrollUpdate) {
+            requestAnimationFrame(function() {
+                updateMenuOnScroll();
+            });
+            ticking = true;
+        }
+    });
+
+    updateMenuOnScroll();
 });
 
-// Функция для скролла к секциям
+function getCurrentSection() {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    if (scrollPosition + windowHeight >= documentHeight - 150) {
+        return 3; 
+    }
+    
+    const header = document.querySelector('.header');
+    const beats = document.getElementById('beats');
+    const price = document.getElementById('price');
+
+    if (!header || !beats || !price) return 0;
+
+    const headerBottom = header.offsetTop + header.offsetHeight;
+    const beatsBottom = beats.offsetTop + beats.offsetHeight;
+    const priceBottom = price.offsetTop + price.offsetHeight;
+
+    if (scrollPosition < headerBottom - 100) {
+        return 0; 
+    } else if (scrollPosition < beatsBottom - 100) {
+        return 1; 
+    } else if (scrollPosition < priceBottom - 100) {
+        return 2; 
+    } else {
+        return 3; 
+    }
+}
+
 function scrollToSection(sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
     }
 }
-// Модальне вікно 
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.querySelector('.modal');
-    const buyButtons = document.querySelectorAll('.buy-btn');
 
-    buyButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            modal.style.display = 'block';
+function scrollToContact() {
+    const footer = document.querySelector('.footer');
+    if (footer) {
+        footer.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
         });
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-});
-
-// прокрутка сторінки та зміна кольору тексту елементів меню в залежності від положення відповідних елементів на сторінці.
-var ticking = false;
-
-window.addEventListener('scroll', function() {
-  if (!ticking) {
-    window.requestAnimationFrame(function() {
-      var mainElement = document.querySelector('.main');
-      var priceElement = document.querySelector('.price');
-      var menuItems = document.querySelectorAll('.slidemenu label a');
-      
-      var mainTop = mainElement ? mainElement.getBoundingClientRect().top : null;
-      var priceTop = priceElement ? priceElement.getBoundingClientRect().top : null;
-      
-      var currentColor = 'white'; 
-
-      if ((mainTop <= 80 && mainTop >= -900) || (priceTop <= 0 && priceTop >= 0)) {
-        currentColor = 'black';
-      }
-      
-      menuItems.forEach(function(item) {
-        item.style.color = currentColor;
-      });
-      
-      ticking = false;
-    });
-    
-    ticking = true;
-  }
-});
-
-
-
-
-
+    }
+}
 
 const songs = [
     {
         id:'1',
-        songName: `Elastic`,
-        poster: "images/1.jpg"
+        songName: `No 1`,
+        poster: "assets/images/8.jpg",
+        genre: "trap"
     },
     {
         id:'2',
-        songName: `Soul`,
-        poster: "images/2.jpg"
+        songName: `ya medaly`,
+        poster: "assets/images/8.jpg", 
+        genre: "trap"
     },
     {
         id:'3',
-        songName: `Teko`,
-        poster: "images/3.jpg"
+        songName: `No 3`,
+        poster: "assets/images/8.jpg",
+        genre: "rap"
     },
     {
         id:'4',
-        songName: `Idly`,
-        poster: "images/4.jpg"
+        songName: `No 2`,
+        poster: "assets/images/8.jpg",
+        genre: "rap"
     },
     {
         id:'5',
-        songName: `Woooh`,
-        poster: "images/5.jpg"
+        songName: `trap 4`,
+        poster: "assets/images/8.jpg",
+        genre: "boom-bap"
     },
     {
         id:'6',
-        songName: `Iop`,
-        poster: "images/6.jpg"
+        songName: `litovsky`,
+        poster: "assets/images/8.jpg",
+        genre: "trap"
     },
     {
         id:'7',
-        songName: `Bounce`,
-        poster: "images/7.jpg"
-    },
-    {
-        id:'8',
-        songName: `Null`,
-        poster: "images/7.jpg"
-    },
-    {
-        id:'9',
-        songName: `Null`,
-        poster: "images/7.jpg"
+        songName: `knof`,
+        poster: "assets/images/8.jpg",
+        genre: "trap"
     }
 ];
 
-Array.from(document.getElementsByClassName('image-container')).forEach((element, i)=>{
-  element.querySelector('img').src = songs[i].poster;
-  element.getElementsByTagName('h2').innerHTML = songs[i].songName;
-});
 
+function filterBeats(genre) {
+    const beatItems = document.querySelectorAll('.image-info-container');
+    const filterButtons = document.querySelectorAll('.genre-filter');
+    
+    filterButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+    
 
-
-
-
-let downPlayer = document.getElementById('downPlayer');
-let music = new Audio();
-let wave = document.getElementsByClassName('wave')[0];
-
-downPlayer.addEventListener('click', () => {
-  if (music.paused || music.currentTime <= 0) {
-    music.play();
-    downPlayer.classList.remove('bi-play-fill');
-    downPlayer.classList.add('bi-pause-fill');
-    wave.classList.add('active2')
-  } else {
-    music.pause();
-    downPlayer.classList.remove('bi-pause-fill');
-    downPlayer.classList.add('bi-play-fill');
-    wave.classList.remove('active2')
-  }
-});
-
-
-
-const makeAllPlays = () =>{
-  Array.from(document.getElementsByClassName('playListPlay')).forEach((element)=>{
-      element.classList.add('bi-play-circle');
-      element.classList.remove('bi-pause-circle');
-  })
+    event.target.classList.add('active');
+    
+    beatItems.forEach((item, index) => {
+        if (genre === 'all') {
+            item.style.display = 'flex';
+        } else {
+            const songGenre = songs[index]?.genre;
+            if (songGenre === genre) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    });
 }
 
 
-let index = 0;
-let poster_player = document.getElementById('poster_player');
-let secondTitle = document.getElementById('title_down_player');
 
 
-Array.from(document.getElementsByClassName('playListPlay')).forEach((element) => {
-  element.addEventListener('click', (e) => {
-    index = e.target.id;
-    makeAllPlays();
-    document.querySelector('.down_player').classList.remove('hidden');
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.genre-filter');
     
-    // Проверяем текущее состояние воспроизведения
-    if (music.paused || music.src !== document.getElementById("audio" + index).src) {
-      // Если на паузе или выбрана новая песня 
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const genre = this.getAttribute('data-genre');
+            filterBeats.call(this, genre);
+        });
+    });
+    
 
-      // Устанавливаем классы кнопкам плей и паузы
-      e.target.classList.remove('bi-play-circle');
-      e.target.classList.add('bi-pause-circle');
-
-      // Устанавливаем источник музыки и постер
-      let audioId = "audio" + index;
-      music.src = document.getElementById(audioId).src;
-      poster_player.src = `images/${index}.jpg`;
-
-      // Воспроизводим музыку
-      music.play();
-
-      // Устанавливаем название песни
-      let song_title = songs.filter((ele) => ele.id == index);
-      secondTitle.innerHTML = song_title[0].songName;
-
-      // Устанавливаем классы для кнопки внизу
-      downPlayer.classList.remove('bi-play-fill');
-      downPlayer.classList.add('bi-pause-fill');
-      wave.classList.add('active2');
-
-      // Добавляем обработчик завершения воспроизведения
-      music.addEventListener('ended', () => {
-        downPlayer.classList.remove('bi-pause-fill');
-        downPlayer.classList.add('bi-play-fill');
-        wave.classList.remove('active2');
-      });
-
-    } else {
-      // Если уже играет текущая песня, ставим на паузу
-
-      music.pause();
-      e.target.classList.remove('bi-pause-circle');
-      e.target.classList.add('bi-play-circle');
-      downPlayer.classList.remove('bi-pause-fill');
-      downPlayer.classList.add('bi-play-fill');
-      wave.classList.remove('active2');
+    const allButton = document.querySelector('.genre-filter[data-genre="all"]');
+    if (allButton) {
+        allButton.classList.add('active');
     }
-  });
 });
 
 
-let currentStart = document.getElementById('currentStart');
-let currentEnd = document.getElementById('currentEnd');
-let seek = document.getElementById('seek');
-let bar2 = document.getElementById('bar2');
-let dot = document.getElementsByClassName('dot')[0];
-
-music.addEventListener('timeupdate',()=>{
-    let music_curr = music.currentTime;
-    let music_dur = music.duration;
-
-    let min = Math.floor(music_dur/60);
-    let sec = Math.floor(music_dur%60);
-    if (sec<10) {
-      sec = `0${sec}`
-    }
-
-    currentEnd.innerText = `${min}:${sec}`;
-
-    let min1 = Math.floor(music_curr/60);
-    let sec1 = Math.floor(music_curr%60);
-    if (sec1<10) {
-      sec1 = `0${sec1}`
-    }
-    currentStart.innerText = `${min1}:${sec1}`;
-
-    let progressbar = parseInt((music.currentTime/music.duration)*100);
-    seek.value = progressbar;
-    let seekbar = seek.value;
-    bar2.style.width = `${seekbar}%`;
-    dot.style.left = `${seekbar}%`;
-})
-
-seek.addEventListener('change', () =>{
-    music.currentTime = seek.value * music.duration/100;
-})
-
-music.addEventListener(`ended`, ()=>{
-    downPlayer.classList.remove('bi-pause-fill');
-    downPlayer.classList.add('bi-play-fill');
-    wave.classList.remove('active2')
-})
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  let vol = document.getElementById('vol');
-  let vol_icon = document.getElementById('vol_icon');
-  let vol_bar = document.querySelector('.vol_bar');
-  let vol_dot = document.getElementById('vol_dot');
-
-  // Установим начальное значение громкости и стили для ползунка и значка
-  let vol_a = 50;
-  vol.value = vol_a;
-  vol_bar.style.width = vol_a + '%';
-  vol_dot.style.left = vol_a + '%';
-
-  if (vol_a == 0) {
-    vol_icon.classList.remove('bi-volume-down-fill', 'bi-volume-up-fill');
-    vol_icon.classList.add('bi-volume-mute-fill');
-  } else if (vol_a > 0 && vol_a <= 50) {
-    vol_icon.classList.remove('bi-volume-mute-fill', 'bi-volume-up-fill');
-    vol_icon.classList.add('bi-volume-down-fill');
-  } else {
-    vol_icon.classList.remove('bi-volume-mute-fill', 'bi-volume-down-fill');
-    vol_icon.classList.add('bi-volume-up-fill');
+Array.from(document.getElementsByClassName('image-info-container')).forEach((container, i)=>{
+  const img = container.querySelector('.image-container img');
+  const title = container.querySelector('.info h2');
+  
+  if (img && songs[i]) {
+    img.src = songs[i].poster;
   }
+  if (title && songs[i]) {
+    title.innerHTML = songs[i].songName;
+  }
+  
+  if (songs[i]) {
+    container.setAttribute('data-genre', songs[i].genre);
+  }
+});
 
-  // Установим громкость для элемента music
-  music.volume = vol_a / 100;
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.pricing-dropdown').forEach((dropdown, index) => {
+    const button = dropdown.querySelector('.buy-btn');
+    
+    const beatTitleElement = dropdown.closest('.image-info-container').querySelector('#title');
+    const beatTitle = beatTitleElement ? beatTitleElement.textContent : 'Unknown Beat';
+    
+    button.addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.querySelectorAll('.pricing-dropdown').forEach(other => {
+        if (other !== dropdown) other.classList.remove('active');
+      });
+      dropdown.classList.toggle('active');
+    });
+    
 
-  vol.addEventListener('change', () => {
-    if (vol.value == 0) {
-        vol_icon.classList.remove('bi-volume-down-fill');
-        vol_icon.classList.add('bi-volume-mute-fill');
-        vol_icon.classList.remove('bi-volume-up-fill');
-    }
-    if (vol.value > 0) {
-        vol_icon.classList.add('bi-volume-down-fill');
-        vol_icon.classList.remove('bi-volume-mute-fill');
-        vol_icon.classList.remove('bi-volume-up-fill');
-    }
-    if (vol.value > 50) {
-        vol_icon.classList.remove('bi-volume-down-fill');
-        vol_icon.classList.remove('bi-volume-mute-fill');
-        vol_icon.classList.add('bi-volume-up-fill');
-    }
+    dropdown.querySelectorAll('.license-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const licenseType = this.getAttribute('data-license');
+        const price = this.getAttribute('data-price');
+        const licenseName = this.querySelector('.license-name').textContent;
+        
 
-    let vol_a = vol.value;
-    vol_bar.style.width = vol_a + '%';
-    vol_dot.style.left = vol_a + '%';
-    music.volume = vol_a/100;
+        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
+        const encodedMessage = encodeURIComponent(message);
+        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
+        
+
+        window.open(telegramUrl, '_blank');
+        
+ 
+        dropdown.classList.remove('active');
+      });
+    });
   });
 
-  vol_icon.addEventListener('click', () => {
-    if (vol.value != 0) {
-      vol.value = 0; 
-      vol.dispatchEvent(new Event('change'));
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.pricing-dropdown')) {
+      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+      });
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+      });
     }
   });
 });
 
-let back = document.getElementById('back');
-let next = document.getElementById('next');
 
-back.addEventListener('click', ()=> {
-    index -= 1;
-    if (index < 1) {
-        index = Array.from(document.getElementsByClassName('image-container')).length;
-    }
 
-    // Обновляем название трека
-    let song_title = songs.filter((ele)=>{
-        return ele.id == index;
-    });
 
-    song_title.forEach(ele => {
-        let {songName} = ele;
-        secondTitle.innerHTML = songName;
-    });
+const newPlayer = document.querySelector('.new-player');
+const newPlayPauseBtn = document.getElementById('new-play-pause');
+const newBackBtn = document.getElementById('new-back');
+const newNextBtn = document.getElementById('new-next');
+const newVolumeBtn = document.getElementById('new-volume-btn');
+const newVolumeSlider = document.getElementById('new-volume-slider');
+const newTrackImage = document.getElementById('new-track-image');
+const newTrackTitle = document.getElementById('new-track-title');
+const newTrackType = document.getElementById('new-track-type');
+const playerProgress = document.querySelector('.player-progress');
+const volumeProgress = document.querySelector('.volume-progress');
 
-    music.src = `beats/${index}.wav`;
-    poster_player.src = `images/${index}.jpg`;
-    music.play();
+const music = new Audio();
+let currentTrackIndex = 0;
+let isPlaying = false;
 
-    makeAllPlays();
+function initNewPlayer() {
+  updateVolume(1);
+}
 
-    // Изменяем кнопку на верхнем плеере в зависимости от состояния воспроизведения на нижнем плеере
-    let playButton = document.getElementById(`${index}`);
-    let isPlaying = !music.paused && !music.ended;
-    if (isPlaying) {
-        playButton.classList.remove('bi-play-circle');
-        playButton.classList.add('bi-pause-fill');
+function updateTrackInfo(index) {
+  const track = songs[index];
+  if (track) {
+    newTrackImage.src = track.poster;
+    newTrackTitle.textContent = track.songName;
+    newTrackType.textContent = getTrackTypeText(track.genre);
+  }
+}
+
+function getTrackTypeText(genre) {
+  const types = {
+    'trap': 'Trap Beat',
+    'rap': 'Rap Beat', 
+    'boom-bap': 'Boom Bap Beat'
+  };
+  return types[genre] || 'Beat';
+}
+
+function playTrack(index) {
+  if (index < 0 || index >= songs.length) return;
+  
+  const track = songs[index];
+  const audioPath = `assets/beats/${track.id}.mp3`;
+  
+  if (currentTrackIndex === index && music.src) {
+    if (music.paused) {
+      music.play().then(() => {
+        isPlaying = true;
+        updatePlayPauseButton();
+        updateAllPlayIcons();
+      }).catch(error => {
+        console.error('Ошибка воспроизведения:', error);
+      });
     } else {
-        playButton.classList.remove('bi-pause-fill');
-        playButton.classList.add('bi-play-circle');
+      music.pause();
+      isPlaying = false;
+      updatePlayPauseButton();
+      updateAllPlayIcons();
     }
+    return;
+  }
+  
+  currentTrackIndex = index;
+  
+  music.src = audioPath;
+  
+  music.onerror = function() {
+    console.error('Ошибка загрузки аудио:', audioPath);
+  };
+  
+  updateTrackInfo(index);
+  newPlayer.classList.remove('hidden');
+  
+  music.play().then(() => {
+    isPlaying = true;
+    updatePlayPauseButton();
+    updateAllPlayIcons();
+  }).catch(error => {
+    console.error('Ошибка воспроизведения:', error);
+  });
+}
+
+function updatePlayPauseButton() {
+  const icon = newPlayPauseBtn.querySelector('i');
+  if (isPlaying) {
+    icon.classList.remove('bi-play-fill');
+    icon.classList.add('bi-pause-fill');
+  } else {
+    icon.classList.remove('bi-pause-fill');
+    icon.classList.add('bi-play-fill');
+  }
+}
+
+function updateVolume(value) {
+  const volume = value / 100;
+  music.volume = volume;
+  newVolumeSlider.value = value;
+  volumeProgress.style.width = value + '%';
+  
+  const volumeIcon = newVolumeBtn.querySelector('i');
+  volumeIcon.className = 'bi ';
+  
+  if (value == 0) {
+    volumeIcon.classList.add('bi-volume-mute-fill');
+  } else if (value <= 50) {
+    volumeIcon.classList.add('bi-volume-down-fill');
+  } else {
+    volumeIcon.classList.add('bi-volume-up-fill');
+  }
+}
+
+music.addEventListener('play', () => {
+  isPlaying = true;
+  updatePlayPauseButton();
+  updateAllPlayIcons();
+});
+
+music.addEventListener('pause', () => {
+  isPlaying = false;
+  updatePlayPauseButton();
+  updateAllPlayIcons();
+});
+
+let lastUpdateTime = 0;
+let lastCurrentTime = 0;
+let nextCurrentTime = 0;
+
+music.addEventListener('timeupdate', () => {
+  lastUpdateTime = performance.now();
+  lastCurrentTime = music.currentTime;
+  nextCurrentTime = lastCurrentTime + 0.25;
+});
+
+let progressAnimationFrame;
+
+function startProgressAnimation() {
+  cancelAnimationFrame(progressAnimationFrame);
+  const animate = () => {
+    if (music.duration && !isDragging) {
+      const progress = (music.currentTime / music.duration) * 100;
+      playerProgress.style.width = `${progress}%`;
+
+      const currentMinutes = Math.floor(music.currentTime / 60);
+      const currentSeconds = Math.floor(music.currentTime % 60);
+      currentTimeTooltip.textContent = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}`;
+      currentTimeTooltip.style.left = `${progress}%`;
+    }
+
+    if (!music.paused) {
+      progressAnimationFrame = requestAnimationFrame(animate);
+    }
+  };
+  progressAnimationFrame = requestAnimationFrame(animate);
+}
+
+
+music.addEventListener('play', startProgressAnimation);
+music.addEventListener('pause', () => cancelAnimationFrame(progressAnimationFrame));
+
+
+
+music.addEventListener('ended', () => {
+  let newIndex = currentTrackIndex + 1;
+  if (newIndex >= songs.length) newIndex = 0;
+  playTrack(newIndex);
+});
+
+Array.from(document.getElementsByClassName('playListPlay')).forEach((element, index) => {
+  element.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    const elementId = element.id;
+    console.log('Clicked element ID:', elementId, 'Array index:', index);
+    
+    const trackIndex = songs.findIndex(song => song.id === elementId);
+    console.log('Found track index:', trackIndex);
+    
+    if (trackIndex !== -1) {
+      playTrack(trackIndex);
+    } else {
+      console.error('Трек не найден для ID:', elementId);
+    }
+  });
+});
+
+function toggleMute() {
+  if (music.volume > 0) {
+    music.dataset.previousVolume = music.volume;
+    music.volume = 0;
+    newVolumeSlider.value = 0;
+    updateVolume(0);
+  } else {
+    const previousVolume = music.dataset.previousVolume || 0.5;
+    music.volume = previousVolume;
+    const volumePercent = Math.round(previousVolume * 100);
+    newVolumeSlider.value = volumePercent;
+    updateVolume(volumePercent);
+  }
+}
+
+function updateAllPlayIcons() {
+  Array.from(document.getElementsByClassName('playListPlay')).forEach((element) => {
+    const elementId = element.id;
+    const trackIndex = songs.findIndex(song => song.id === elementId);
+    
+    if (trackIndex === currentTrackIndex && !music.paused) {
+      element.classList.remove('bi-play-circle');
+      element.classList.add('bi-pause-circle');
+    } else {
+      element.classList.remove('bi-pause-circle');
+      element.classList.add('bi-play-circle');
+    }
+  });
+}
+
+// Кнопки плеера
+newPlayPauseBtn.addEventListener('click', () => {
+  if (music.paused) {
+    if (!music.src) {
+      playTrack(0);
+    } else {
+      music.play();
+    }
+  } else {
+    music.pause();
+  }
+});
+
+newVolumeSlider.addEventListener('input', (e) => {
+  updateVolume(e.target.value);
+});
+
+document.querySelector('.player-progress-bar').addEventListener('click', (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const percent = (e.clientX - rect.left) / rect.width;
+  music.currentTime = percent * music.duration;
+});
+
+const progressBar = document.querySelector('.player-progress-bar');
+let isDragging = false;
+let dragPercent = 0;
+
+progressBar.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  updateDragProgress(e);
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    updateDragProgress(e);
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  if (isDragging) {
+    isDragging = false;
+    if (music.duration) {
+      music.currentTime = dragPercent * music.duration;
+    }
+  }
+});
+
+function updateDragProgress(e) {
+  const rect = progressBar.getBoundingClientRect();
+  dragPercent = (e.clientX - rect.left) / rect.width;
+  dragPercent = Math.max(0, Math.min(1, dragPercent));
+
+  document.querySelector('.player-progress').style.width = (dragPercent * 100) + '%';
+  currentTimeTooltip.style.left = `${dragPercent * 100}%`;
+
+  if (music.duration) {
+    const previewTime = dragPercent * music.duration;
+    const mins = Math.floor(previewTime / 60);
+    const secs = Math.floor(previewTime % 60);
+    currentTimeTooltip.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  }
+}
+
+
+newBackBtn.addEventListener('click', () => {
+  let newIndex = currentTrackIndex - 1;
+  if (newIndex < 0) newIndex = songs.length - 1;
+  playTrack(newIndex);
+});
+
+newNextBtn.addEventListener('click', () => {
+  let newIndex = currentTrackIndex + 1;
+  if (newIndex >= songs.length) newIndex = 0;
+  playTrack(newIndex);
+});
+
+newVolumeBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  toggleMute();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const volumeControl = document.querySelector('.volume-control');
+  const volumeSlider = document.getElementById('new-volume-slider');
+  
+  volumeControl.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    
+    const delta = e.deltaY > 0 ? -5 : 5;
+    let newVolume = parseInt(volumeSlider.value) + delta;
+    
+    newVolume = Math.max(0, Math.min(100, newVolume));
+    volumeSlider.value = newVolume;
+    updateVolume(newVolume);
+  });
+});
+  
+const currentTimeTooltip = document.querySelector('.current-time');
+const durationTimeTooltip = document.querySelector('.duration-time');
+
+function updateTimeTooltips() {
+  if (!music.duration) return;
+  
+  const progressPercent = (music.currentTime / music.duration) * 100;
+  const currentMinutes = Math.floor(music.currentTime / 60);
+  const currentSeconds = Math.floor(music.currentTime % 60);
+  
+  currentTimeTooltip.textContent = `${currentMinutes.toString().padStart(2, '0')}:${currentSeconds.toString().padStart(2, '0')}`;
+  currentTimeTooltip.style.left = `${progressPercent}%`;
+  
+  const durationMinutes = Math.floor(music.duration / 60);
+  const durationSeconds = Math.floor(music.duration % 60);
+  
+  durationTimeTooltip.textContent = `${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
+}
+
+music.addEventListener('timeupdate', () => {
+  updateTimeTooltips();
+});
+
+music.addEventListener('loadedmetadata', () => {
+  updateTimeTooltips();
 });
 
 
-next.addEventListener('click', ()=> {
-    index -= 0;
-    index += 1;
-    if (index > Array.from(document.getElementsByClassName('image-container')).length) {
-        index = 1;
-    }
+function updateProgress(e) {
+  const progressBar = document.querySelector('.player-progress-bar');
+  const rect = progressBar.getBoundingClientRect();
+  let percent = (e.clientX - rect.left) / rect.width;
+  
+  percent = Math.max(0, Math.min(1, percent));
+  
+  if (music.duration) {
+    music.currentTime = percent * music.duration;
+  }
+  
+  document.querySelector('.player-progress').style.width = (percent * 100) + '%';
+  updateTimeTooltips();
+}
 
-    // Обновляем название трека
-    let song_title = songs.filter((ele)=>{
-        return ele.id == index;
-    });
 
-    song_title.forEach(ele => {
-        let {songName} = ele;
-        secondTitle.innerHTML = songName;
-    });
 
-    music.src = `beats/${index}.wav`;
-    poster_player.src = `images/${index}.jpg`;
-    music.play();
 
-    makeAllPlays();
-
-    // Изменяем кнопку на верхнем плеере в зависимости от состояния воспроизведения на нижнем плеере
-    let playButton = document.getElementById(`${index}`);
-    let isPlaying = !music.paused && !music.ended;
-    if (isPlaying) {
-        playButton.classList.remove('bi-play-circle');
-        playButton.classList.add('bi-pause-fill');
-    } else {
-        playButton.classList.remove('bi-pause-fill');
-        playButton.classList.add('bi-play-circle');
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  initNewPlayer();
 });
 
+// ФИКС ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ - РАБОТАЕТ КАК НА ПК
+document.addEventListener('DOMContentLoaded', function() {
+  // Переинициализация выпадающих меню для мобильных
+  document.querySelectorAll('.pricing-dropdown').forEach((dropdown, index) => {
+    const button = dropdown.querySelector('.buy-btn');
+    
+    // Удаляем старые обработчики
+    const newButton = button.cloneNode(true);
+    button.parentNode.replaceChild(newButton, button);
+    
+    // Добавляем обработчики для новой кнопки
+    newButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      document.querySelectorAll('.pricing-dropdown').forEach(other => {
+        if (other !== dropdown) other.classList.remove('active');
+      });
+      dropdown.classList.toggle('active');
+    });
+    
+    // Добавляем touch события для мобильных
+    newButton.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      document.querySelectorAll('.pricing-dropdown').forEach(other => {
+        if (other !== dropdown) other.classList.remove('active');
+      });
+      dropdown.classList.toggle('active');
+    });
 
+    // Обновляем обработчики для опций лицензий
+    dropdown.querySelectorAll('.license-option').forEach(option => {
+      const newOption = option.cloneNode(true);
+      option.parentNode.replaceChild(newOption, option);
+      
+      newOption.addEventListener('click', function() {
+        const licenseType = this.getAttribute('data-license');
+        const price = this.getAttribute('data-price');
+        const licenseName = this.querySelector('.license-name').textContent;
+        const beatTitle = dropdown.closest('.image-info-container').querySelector('#title').textContent;
+        
+        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
+        const encodedMessage = encodeURIComponent(message);
+        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
+        
+        window.open(telegramUrl, '_blank');
+        dropdown.classList.remove('active');
+      });
+      
+      // Добавляем touch события для опций
+      newOption.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        const licenseType = this.getAttribute('data-license');
+        const price = this.getAttribute('data-price');
+        const licenseName = this.querySelector('.license-name').textContent;
+        const beatTitle = dropdown.closest('.image-info-container').querySelector('#title').textContent;
+        
+        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
+        const encodedMessage = encodeURIComponent(message);
+        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
+        
+        window.open(telegramUrl, '_blank');
+        dropdown.classList.remove('active');
+      });
+    });
+  });
+
+  // Закрытие меню при клике вне его
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.pricing-dropdown')) {
+      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+      });
+    }
+  });
+
+  document.addEventListener('touchstart', function(e) {
+    if (!e.target.closest('.pricing-dropdown')) {
+      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+      });
+    }
+  });
+});
+
+// Убираем фиксированное позиционирование для мобильных - оставляем как на ПК
+const mobileFixCSS = `
+@media (max-width: 768px) {
+  .pricing-dropdown .pricing-options {
+    position: absolute !important;
+    left: 0 !important;
+    top: 100% !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    z-index: 1000 !important;
+  }
+  
+  .license-option {
+    padding: 12px !important;
+    min-height: auto !important;
+  }
+  
+  .buy-btn, .license-option {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  /* Увеличиваем область клика для мобильных */
+  .license-option {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+`;
+
+// Добавляем стили в head
+const style = document.createElement('style');
+style.textContent = mobileFixCSS;
+document.head.appendChild(style);
 

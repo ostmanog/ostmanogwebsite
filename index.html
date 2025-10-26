@@ -3,12 +3,13 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="oksyoldev">
     <meta name="description"
     content="OstmanOG - сайт продакшн битмейкера Ostman'a">
     <meta name='Keywords' Content='Ostman, остменбитз, остмен, ostman instrumentals, трэп биты, биты остмен'>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <title>OSTMAN.OG</title>
   </head>
@@ -16,12 +17,12 @@
 
 <div class="header">
   <section id="header"></section>
-  <a href="index.html"><img src="images/logo.png" class="logo" alt="Логотип"></a>
+  <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Логотип"></a>
   <h1>OSTMAN.OG</h1> 
   <h1>instrumentals</h1>
   <nav class="animated-menu">
     <ul><li><a class="active" onclick="scrollToTop()"><i class="bi bi-house"></i></a></li></ul>
-    <ul><li><a onclick="scrollToSection('beats')"><i class="bi bi-music-note"></i></a></li></ul>
+    <ul><li><a onclick="scrollToSection('beats')"><i class="bi bi-boombox"></i></a></li></ul>
     <ul><li><a onclick="scrollToSection('price')"><i class="bi bi-currency-dollar"></i></a></li></ul>
     <ul><li><a onclick="scrollToSection('contact')"><i class="bi bi-person"></i></a></li></ul>
 
@@ -34,213 +35,335 @@
 <div id="beats">
 <div class="main">
   <section id="beats"></section>
+
+  <div class="genre-section">
+    <div class="genre-title">Жанри</div>
+    <div class="genre-filters">
+      <button class="genre-filter active" data-genre="all">Усі бити</button>
+      <button class="genre-filter" data-genre="trap">Треп</button>
+      <button class="genre-filter" data-genre="rap">Реп</button>
+      <button class="genre-filter" data-genre="boom-bap">Бум-беп</button>
+    </div>
+  </div>
   <div class="beats">
     <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-          <audio id="audio1" src="beats\1.wav"></audio>
-          <i class="bi playListPlay bi-play-circle" id="1"></i>
-    </div>
-      <div class="info">
-        <h2 id="title">ya_medali (150 bpm)</h2>
-          <p>Type: Trap Beat</p>
-           <button class="buy-btn" id="one">
-            <span class="button-text">💌</span>
-              Купить
-            </button>  
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
+        <i class="bi playListPlay bi-play-circle" id="1"></i>
       </div>
-      <div class="modal">
-        <div class="modal-content">
-          <p class="modal_p">Для покупки обратитесь в мессенджер или напишите на почту:</p>
-          <p class="modal_form">Название бита: <br /> Лицензия:</p>
-            <div class="modal_social">
-            <a target="_blank" href="https://www.instagram.com/oksyolbeatz/"><i class="bi bi-instagram"></i></a>
-            <a target="_blank" href="https://t.me/oksyol/"><i class="bi bi-telegram"></i></a>
-            <a target="_blank" href="mailto:n.chetenov@gmail.com"><i class="bi bi-envelope"></i></a>
+      <div class="info">
+        <h2 id="title">No 1</h2>
+        <p>Type: Trap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-        <audio id="audio2" src="beats/2.wav"></audio>
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
         <i class="bi playListPlay bi-play-circle" id="2"></i>
+      </div>
+      <div class="info">
+        <h2 id="title">ya medaly</h2>
+        <p>Type: Trap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <h2 id="title">plach (145 bpm)</h2>
-        <p>Type: Trap Beat</p>
-          <button class="buy-btn">
-            <span class="button-text">💌</span>
-            Купить
-          </button>  
-    </div>
-  </div>
-  <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-        <audio id="audio3" src="beats\3.wav"></audio>
+
+    <div class="image-info-container">
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
         <i class="bi playListPlay bi-play-circle" id="3"></i>
+      </div>
+      <div class="info">
+        <h2 id="title">No 3</h2>
+        <p>Type: Rap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <h2 id="title">popugay (150 bpm)</h2>
-        <p>Type: Trap Beat</p>
-          <button class="buy-btn">
-            <span class="button-text">💌</span>
-            Купить
-          </button>  
-    </div>
-  </div>
-  <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-        <audio id="audio4" src="beats\4.wav"></audio>
+
+    <div class="image-info-container">
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
         <i class="bi playListPlay bi-play-circle" id="4"></i>
+      </div>
+      <div class="info">
+        <h2 id="title">No 2</h2>
+        <p>Type: Rap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <h2 id="title">hz prost (122 bpm)</h2>
-        <p>Type: Trap Beat</p>
-          <button class="buy-btn">
-            <span class="button-text">💌</span>
-            Купить
-          </button>  
-    </div>
-  </div>
-  <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-        <audio id="audio5" src="beats\5.wav"></audio>
+
+    <div class="image-info-container">
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
         <i class="bi playListPlay bi-play-circle" id="5"></i>
+      </div>
+      <div class="info">
+        <h2 id="title">trap 4</h2>
+        <p>Type: Boom-bap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <h2 id="title">wow (184 bpm)</h2>
-        <p>Type: Trap Beat</p>
-          <button class="buy-btn">
-            <span class="button-text">💌</span>
-            Купить
-          </button>  
-    </div>
-  </div>
-  <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-        <audio id="audio6" src="beats\6.wav"></audio>
+
+    <div class="image-info-container">
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
         <i class="bi playListPlay bi-play-circle" id="6"></i>
+      </div>
+      <div class="info">
+        <h2 id="title">litovsky</h2>
+        <p>Type: Trap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <h2 id="title">bad (202 bpm)</h2>
-        <p>Type: Trap Beat</p>
-          <button class="buy-btn">
-            <span class="button-text">💌</span>
-            Купить
-          </button>  
-    </div>
-  </div>
-  <div class="image-info-container">
-    <div class="image-container">
-      <img src="images/1.jpg" class="imagemusic">
-        <audio id="audio7" src="beats\7.wav"></audio>
+
+    <div class="image-info-container">
+      <div class="image-container">
+        <img src="assets/images/8.jpg" class="imagemusic">
         <i class="bi playListPlay bi-play-circle" id="7"></i>
+      </div>
+      <div class="info">
+        <h2 id="title">knof</h2>
+        <p>Type: Trap</p>
+        <div class="pricing-dropdown">
+          <button class="buy-btn">💎 Придбати від 10$ <i class="bi bi-chevron-down"></i></button>
+          <div class="pricing-options">
+            <div class="license-option" data-license="wav-lease" data-price="10">
+              <div class="license-info"><span class="license-name">WAV Lease</span><span class="license-price">10$</span></div>
+              <div class="license-desc">Базові права</div>
+            </div>
+            <div class="license-option" data-license="wav-exclusive" data-price="20">
+              <div class="license-info"><span class="license-name">WAV Exclusive</span><span class="license-price">20$</span></div>
+              <div class="license-desc">Ексклюзивні права</div>
+            </div>
+            <div class="license-option" data-license="trackout" data-price="50">
+              <div class="license-info"><span class="license-name">Track Out</span><span class="license-price">50$</span></div>
+              <div class="license-desc">Всі треки + ексклюзив</div>
+            </div>
+            <div class="contact-hint"><i class="bi bi-telegram"></i><span>Виберіть ліцензію для зв'язку в Telegram</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="info">
-      <h2 id="title">traphouse (177 bpm)</h2>
-        <p>Type: Trap Beat</p>
-          <button class="buy-btn">
-            <span class="button-text">💌</span>
-            Купить
-          </button>  
-    </div>
+
+
   </div>
-  </div>
-  </div>
+</div>
 </div>
 
 <div id="price">
 <div class="price">
   <section id="price"></section>
   <div class="image-block">
-  <div class="image-item">
-    <div class="image-item first">
-    <div class="image-content">
-        <img src="images/mp3lease.png" alt="Image 1">
-        <p>MP3 LEASE <span class="price-item">3$</span></p>
+    <div class="image-item">
+      <div class="image-content">
+        <img src="assets/images/wavlease.png" alt="WAV Lease">
+        <p>🎧 WAV Lease (ліцензія на оренду у форматі WAV)</p>
+      </div>
+      <div class="text-block">
+        <p>Отримай високоякісний біт у форматі WAV для комерційного використання.
+        Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації.
+        Біт залишається у продажу для інших артистів.</p>
+        <ul>
+          <li>Включає:</li>
+          <li>• WAV-файл повної версії біта;</li>
+          <li>• Комерційне використання (Spotify, YouTube, Apple Music тощо);</li>
+          <li>• До 100 000 стрімів;</li>
+          <li>• Право виступати з треком на концертах;</li>
+          <li>• Не можна продавати або передавати права іншим.</li>
+        </ul>
+      </div>
     </div>
-    <div class="text-block">
-      <p>Приобретая данный вид аренды, вы получаете бит в формате MP3 с 1 тегом.</p>
-  <ul>
-    <li>Использование в коммерческих целях.</li>
-    <li>Авторские права на бит принадлежат мне.</li>
-    <li>Право размещать трек на всех площадках и других цифровых магазинах.</li>
-    <li>При публикации трека обязательно укажите (prod. by oksyolbeatz) в названии трека или поста.</li>
-  </ul>
-</div>
+
+    <div class="image-item">
+      <div class="image-content">
+        <img src="assets/images/wavExclusive.png" alt="WAV Exclusive">
+        <p>💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)</p>
+      </div>
+      <div class="text-block">
+        <p>Отримай ексклюзивні права на біт.
+          Після покупки він видаляється з продажу та переходить у твоє повне користування.
+          Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.</p>
+        <ul>
+          <li>Включає:</li>
+          <li>• WAV-файл біта у найвищій якості;</li>
+          <li>• Необмежене комерційне використання;</li>
+          <li>• Ексклюзивні права;</li>
+          <li>• Біт більше не продається іншим;</li>
+          <li>• Можеш реєструвати трек у дистриб’юторах, збирати роялті тощо.</li>
+          <li>• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="image-item">
+      <div class="image-content">
+        <img src="assets/images/TrackOutExclusive.png" alt="Trackout Exclusive">
+        <p>🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)</p>
+      </div>
+      <div class="text-block">
+        <p>Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення.
+            Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.</p>
+        <ul>
+          <li>Включає:</li>
+          <li>• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;</li>
+          <li>• Ексклюзивні права;</li>
+          <li>• Необмежене комерційне використання;</li>
+          <li>• Біт видаляється з каталогу після покупки;</li>
+          <li>• Ідеально для студійного продакшну та міксу.</li>
+          <li>• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="image-item">
-    <div class="image-item two">
-    <div class="image-content">
-        <img src="images/wlease.png" alt="Image 2">
-        <p>WAW LEASE <span class="price-item">10$</span></p>
-    </div>
-    <div class="text-block">
-  <p>Приобретая данный вид аренды, вы получаете бит в формате MP3 + WAV с 1 тегом.</p>
-  <ul>
-    <li>Использование в коммерческих целях.</li>
-    <li>Авторские права на бит принадлежат мне.</li>
-    <li>Право размещать трек на всех площадках и других цифровых магазинах.</li>
-    <li>При публикации трека обязательно укажите (prod. by oksyolbeatz) в названии трека или поста.</li>
-  </ul>
 </div>
 </div>
-  </div>
-  <div class="image-item">
-    <div class="image-item three">
-    <div class="image-content">
-        <img src="images/tlease.png" alt="Image 3">
-        <p>TRACKOUT LEASE <span class="price-item">20$</span></p>
-    </div>
-    <div class="text-block">
-  <p>Приобретая данный вид аренды, вы получаете бит по дорожкам в формате MP3 + WAV + TRACK OUT с 1 тегом.</p>
-  <ul>
-    <li>Использование в коммерческих целях.</li>
-    <li>Авторские права на бит принадлежат мне.</li>
-    <li>Право размещать трек на всех площадках и других цифровых магазинах.</li>
-    <li>При публикации трека обязательно укажите (prod. by oksyolbeatz) в названии трека или поста.</li>
-  </ul>
-</div>
-  </div>
-</div>
-</div>
-</div>
-</div> 
 
 
-<div class="down_player hidden">
-  <div class="wave">
-    <div class="wave1"></div>
-    <div class="wave1"></div>
-    <div class="wave1"></div>
-  </div>
-  <img src="images\1.jpg" alt="Null" id="poster_player"> 
-  <h2 id="title_down_player">Elastic</h2>
-  <div class="icon">
-    <i class="bi bi-skip-backward-fill" id="back"></i>
-    <i class="bi bi-play-fill" id="downPlayer"></i>
-    <i class="bi bi-skip-forward-fill" id="next"></i>
-  </div>
-  <span id="currentStart">0:00</span>
-  <div class="bar">
-    <input type="range" id="seek" class="input" min="0" value="0" max="100">
-    <div class="bar2" id="bar2"></div>
-    <div class="dot"></div>
-  </div>
-  <span id="currentEnd">0:00</span>
 
-  <div class="vol">
-    <i class="bi bi-volume-down-fill" id="vol_icon"></i>
-    <input type="range" id="vol" class="input" min="0" value="30" max="100">
-    <div class="vol_bar"></div>
-    <div class="dot" id="vol_dot"></div>
+<div class="new-player hidden">
+  <div class="player-progress-bar">
+    <div class="player-progress"></div>
+    <div class="time-tooltip current-time">00:00</div>
+    <div class="time-tooltip duration-time">00:00</div>
+  </div>
+  
+  <div class="player-controls">
+    <div class="player-left">
+      <button class="control-btn" id="new-back">
+        <i class="bi bi-skip-backward-fill"></i>
+      </button>
+      <button class="control-btn play-pause-btn" id="new-play-pause">
+        <i class="bi bi-play-fill"></i>
+      </button>
+      <button class="control-btn" id="new-next">
+        <i class="bi bi-skip-forward-fill"></i>
+      </button>
+      
+      <div class="track-info">
+        <img src="assets/images/8.jpg" alt="Track" class="track-image" id="new-track-image">
+        <div class="track-details">
+          <div class="track-title" id="new-track-title">Название бита</div>
+          <div class="track-type" id="new-track-type">Trap Beat</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="player-right">
+      <div class="volume-control">
+        <div class="player-brand">ostman.og</div>
+        <button class="control-btn volume-btn" id="new-volume-btn">
+          <i class="bi bi-volume-up-fill"></i>
+        </button>
+        <div class="volume-slider-container">
+          <input type="range" class="volume-slider" id="new-volume-slider" min="0" max="100" value="50">
+          <div class="volume-progress"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -251,7 +374,7 @@
       <span class="copyright">&copy; 2025</span> <span class="brand">OSTMAN.OG</span>
     </div>
     <div class="footer-center">
-      <img src="assets/images/music.svg" alt="Music" class="music-icon">
+      <img src="assets/images/logo.png" alt="Music" class="music-icon">
     </div>
     <div class="footer-right">
       <div class="social">
