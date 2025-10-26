@@ -273,6 +273,7 @@ h1:last-of-type {
 }
 
 
+
 .price {
   background-color: #f8dbb3;
   padding: 5em 3em;
@@ -368,6 +369,47 @@ h1:last-of-type {
   font-family: 'aaaiight', sans-serif;
   letter-spacing: 3px;
 }
+
+.lol {
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 30px;
+
+}
+
+/* Стрелка с иконкой Bootstrap */
+.arrow-pointing-to-text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0 20px 0;
+  animation: pointToText 2s infinite;
+}
+
+.arrow-line {
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(to top, #fe2b0d, #ff6b35);
+  border-radius: 2px;
+}
+
+.arrow-icon {
+  font-size: 35px;
+  color: #fe2b0d;
+  margin-top: -8px;
+  filter: drop-shadow(0 2px 8px rgba(254, 43, 13, 0.4));
+}
+
+@keyframes pointToText {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+} 
 
 .genre-filters {
   display: flex;
