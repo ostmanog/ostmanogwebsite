@@ -194,6 +194,12 @@ const songs = [
         songName: `knof`,
         poster: "assets/images/8.jpg",
         genre: "trap"
+    },
+    {
+        id:'8',
+        songName: `demo 😈`,
+        poster: "assets/images/8.jpg",
+        genre: "trap"
     }
 ];
 
