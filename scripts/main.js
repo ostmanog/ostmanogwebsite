@@ -366,7 +366,10 @@ function playTrack(index) {
   if (index < 0 || index >= songs.length) return;
   
   const track = songs[index];
-  const audioPath = `assets/beats/${track.id}.mp3`; 
+  // Используем RAW ссылку
+  const audioPath = track.url;
+  
+  console.log('🎵 Loading RAW:', audioPath);
   
   if (currentTrackIndex === index && music.src) {
     if (music.paused) {
@@ -374,8 +377,6 @@ function playTrack(index) {
         isPlaying = true;
         updatePlayPauseButton();
         updateAllPlayIcons();
-      }).catch(error => {
-        console.error('Ошибка воспроизведения:', error);
       });
     } else {
       music.pause();
@@ -387,12 +388,7 @@ function playTrack(index) {
   }
   
   currentTrackIndex = index;
-  
   music.src = audioPath;
-  
-  music.onerror = function() {
-    console.error('Ошибка загрузки аудио:', audioPath);
-  };
   
   updateTrackInfo(index);
   newPlayer.classList.remove('hidden');
@@ -401,8 +397,9 @@ function playTrack(index) {
     isPlaying = true;
     updatePlayPauseButton();
     updateAllPlayIcons();
+    console.log('✅ Playing:', track.songName);
   }).catch(error => {
-    console.error('Ошибка воспроизведения:', error);
+    console.error('❌ Play error:', error);
   });
 }
 
