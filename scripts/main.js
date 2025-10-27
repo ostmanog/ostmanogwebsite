@@ -164,43 +164,50 @@ const songs = [
         id:'2',
         songName: `ya medaly`,
         poster: "assets/images/8.jpg", 
-        genre: "trap"
+        genre: "trap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/2.mp3"
     },
     {
         id:'3',
         songName: `No 3`,
         poster: "assets/images/8.jpg",
-        genre: "rap"
+        genre: "rap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/3.mp3"
     },
     {
-        id:'4',
+        id:'4', 
         songName: `No 2`,
         poster: "assets/images/8.jpg",
-        genre: "rap"
+        genre: "rap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/4.mp3"
     },
     {
         id:'5',
         songName: `trap 4`,
         poster: "assets/images/8.jpg",
-        genre: "boom-bap"
+        genre: "boom-bap", 
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/5.mp3"
     },
     {
         id:'6',
         songName: `litovsky`,
         poster: "assets/images/8.jpg",
-        genre: "trap"
+        genre: "trap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/6.mp3"
     },
     {
         id:'7',
         songName: `knof`,
-        poster: "assets/images/8.jpg",
-        genre: "trap"
+        poster: "assets/images/8.jpg", 
+        genre: "trap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/7.mp3"
     },
     {
         id:'8',
-        songName: `demo 😈`,
+        songName: `demo`,
         poster: "assets/images/8.jpg",
-        genre: "trap"
+        genre: "trap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/8.mp3"
     }
 ];
 
