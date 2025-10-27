@@ -212,6 +212,8 @@ const songs = [
 ];
 
 
+
+
 function filterBeats(genre) {
     const beatItems = document.querySelectorAll('.image-info-container');
     const filterButtons = document.querySelectorAll('.genre-filter');
@@ -346,6 +348,45 @@ const volumeProgress = document.querySelector('.volume-progress');
 const music = new Audio();
 let currentTrackIndex = 0;
 let isPlaying = false;
+
+// Получаем логотип
+// Получаем логотип
+const logo = document.querySelector('.logo');
+let rotationAngle = 0;
+let animationFrameId = null;
+
+// Функция для вращения логотипа
+function animateLogo() {
+    rotationAngle += 0.5; // Медленнее вращение
+    logo.style.transform = `rotate(${rotationAngle}deg)`;
+    animationFrameId = requestAnimationFrame(animateLogo);
+}
+
+function toggleLogoSpin(shouldSpin) {
+    if (shouldSpin) {
+        if (!animationFrameId) {
+            animationFrameId = requestAnimationFrame(animateLogo);
+        }
+    } else {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    }
+}
+
+// Добавляем обработчики для музыки
+music.addEventListener('play', () => {
+    toggleLogoSpin(true);
+});
+
+music.addEventListener('pause', () => {
+    toggleLogoSpin(false);
+});
+
+music.addEventListener('ended', () => {
+    toggleLogoSpin(false);
+});
 
 function initNewPlayer() {
   updateVolume(1);

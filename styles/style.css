@@ -1032,6 +1032,7 @@ h1:last-of-type {
 }
 
 
+
 /* Адаптивность для битов */
 @media (max-width: 1200px) {
     .beats {
@@ -1639,7 +1640,7 @@ h1:last-of-type {
   
   .info p {
     font-size: 0.9rem !important;
-    margin-top: -15px !important;
+    margin-top: -5px !important;
   }
   
   /* Кнопка покупки */
@@ -1647,6 +1648,7 @@ h1:last-of-type {
     font-size: 12px !important;
     padding: 8px 14px !important;
     min-width: 120px !important;
+    margin-bottom: -25px;
   }
   
   /* Ценовые карточки */
@@ -1853,3 +1855,4 @@ h1:last-of-type {
     transform: scale(0.98) !important;
   }
 }
+
