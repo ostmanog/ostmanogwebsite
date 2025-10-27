@@ -365,7 +365,7 @@ function playTrack(index) {
   if (index < 0 || index >= songs.length) return;
   
   const track = songs[index];
-  const audioPath = `assets/beats/${track.id}.mp3?v=${Date.now()}`;
+  const audioPath = `assets/beats/${track.id}.mp3`; 
   
   if (currentTrackIndex === index && music.src) {
     if (music.paused) {
