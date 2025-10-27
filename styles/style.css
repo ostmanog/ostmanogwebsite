@@ -1148,7 +1148,27 @@ h1:last-of-type {
         cursor: pointer;
     }
 
-
+    .price .image-item img {
+        width: 220px !important;
+        height: 220px !important;
+    }
+    
+    .price .image-item p {
+        font-size: 14px !important;
+        min-height: 40px !important;
+    }
+    
+    .price .text-block p {
+        font-size: 13px !important;
+    }
+    
+    .price .text-block li:first-child {
+        font-size: 14px !important;
+    }
+    
+    .text-block li {
+        font-size: 12px !important;
+    }
     
     .image-container img {
         width: 100px;
