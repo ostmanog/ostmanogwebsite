@@ -157,7 +157,8 @@ const songs = [
         id:'1',
         songName: `No 1`,
         poster: "assets/images/8.jpg",
-        genre: "trap"
+        genre: "trap",
+        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/1.mp3"
     },
     {
         id:'2',
