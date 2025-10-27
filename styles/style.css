@@ -370,46 +370,7 @@ h1:last-of-type {
   letter-spacing: 3px;
 }
 
-.lol {
-  font-size: 32px;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 30px;
-
-}
-
-/* Стрелка с иконкой Bootstrap */
-.arrow-pointing-to-text {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 40px 0 20px 0;
-  animation: pointToText 2s infinite;
-}
-
-.arrow-line {
-  width: 3px;
-  height: 50px;
-  background: linear-gradient(to top, #fe2b0d, #ff6b35);
-  border-radius: 2px;
-}
-
-.arrow-icon {
-  font-size: 35px;
-  color: #fe2b0d;
-  margin-top: -8px;
-  filter: drop-shadow(0 2px 8px rgba(254, 43, 13, 0.4));
-}
-
-@keyframes pointToText {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-} 
+ 
 
 .genre-filters {
   display: flex;
@@ -1561,7 +1522,24 @@ h1:last-of-type {
         transform: scale(1) !important;
         pointer-events: auto !important;
         visibility: visible !important;
-        margin-bottom: 20px !important; /* Сохраняем отступ между видимыми элементами */
+        margin-bottom: 20px !important;
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* КОГДА МЕНЮ ОТКРЫТО - ПОДНИМАЕМ ВЕСЬ КОНТЕЙНЕР БИТА НАВЕРХ */
+    .pricing-dropdown.active {
+        z-index: 1000 !important;
+    }
+    
+    .image-info-container:has(.pricing-dropdown.active) {
+        z-index: 1001 !important;
+        position: relative;
+    }
+    
+    .pricing-dropdown.active .pricing-options {
+        z-index: 1002 !important;
+        position: absolute !important;
     }
     
     /* Перестраиваем сетку для мобильных */
@@ -1569,7 +1547,8 @@ h1:last-of-type {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 0 !important; /* Убираем grid gap, используем margin-bottom */
+        gap: 0 !important;
+        position: relative;
     }
     
     .image-info-container {
