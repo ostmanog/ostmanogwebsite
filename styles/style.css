@@ -1848,7 +1848,7 @@ h1:last-of-type {
   .control-btn:hover {
     transform: none !important;
   }
-  1
+  
   .buy-btn:active,
   .genre-filter:active,
   .control-btn:active {
@@ -1856,3 +1856,23 @@ h1:last-of-type {
   }
 }
 
+/* 4 бита только если реально viewport <= 1600px */
+@media (max-width: 1600px) {
+  .beats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 5 бит только для ОЧЕНЬ больших экранов */
+@media (min-width: 1801px) {
+  .beats {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* 4 бита для большинства Full HD экранов */
+@media (min-width: 1201px) {
+  .beats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
