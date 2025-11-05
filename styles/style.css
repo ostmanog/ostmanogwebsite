@@ -704,7 +704,7 @@ h1:last-of-type {
   padding: 10px 12px;
   background: #f8f9fa;
   border-top: 1px solid #e9ecef;
-  font-size: 11px;
+  font-size: 12px;
   color: #666;
 }
 
@@ -717,7 +717,7 @@ h1:last-of-type {
 
 .contact-hint .bi-telegram {
   color: #0088cc;
-  font-size: 12px;
+  font-size: 25px;
 }
 
 
