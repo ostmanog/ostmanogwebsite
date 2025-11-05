@@ -685,9 +685,10 @@ h1:last-of-type {
 
 
 .license-currency {
-  margin-left: 0.15em;
+  margin-left: 0.10em;
   font-size: 1.2em;
   opacity: 0.85;
+  font-family: Arial, sans-serif;
   transform: translateY(-0.02em);
 }
 
