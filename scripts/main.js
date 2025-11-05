@@ -349,15 +349,12 @@ const music = new Audio();
 let currentTrackIndex = 0;
 let isPlaying = false;
 
-// Получаем логотип
-// Получаем логотип
 const logo = document.querySelector('.logo');
 let rotationAngle = 0;
 let animationFrameId = null;
 
-// Функция для вращения логотипа
 function animateLogo() {
-    rotationAngle += 0.5; // Медленнее вращение
+    rotationAngle += 0.5;
     logo.style.transform = `rotate(${rotationAngle}deg)`;
     animationFrameId = requestAnimationFrame(animateLogo);
 }
@@ -375,7 +372,6 @@ function toggleLogoSpin(shouldSpin) {
     }
 }
 
-// Добавляем обработчики для музыки
 music.addEventListener('play', () => {
     toggleLogoSpin(true);
 });
@@ -389,7 +385,7 @@ music.addEventListener('ended', () => {
 });
 
 function initNewPlayer() {
-  updateVolume(1);
+  updateVolume(70);
 }
 
 function updateTrackInfo(index) {
@@ -414,7 +410,6 @@ function playTrack(index) {
   if (index < 0 || index >= songs.length) return;
   
   const track = songs[index];
-  // Используем RAW ссылку
   const audioPath = track.url;
   
   console.log('🎵 Loading RAW:', audioPath);
@@ -584,7 +579,6 @@ function updateAllPlayIcons() {
   });
 }
 
-// Кнопки плеера
 newPlayPauseBtn.addEventListener('click', () => {
   if (music.paused) {
     if (!music.src) {
@@ -731,17 +725,13 @@ document.addEventListener('DOMContentLoaded', function() {
   initNewPlayer();
 });
 
-// ФИКС ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ - РАБОТАЕТ КАК НА ПК
 document.addEventListener('DOMContentLoaded', function() {
-  // Переинициализация выпадающих меню для мобильных
   document.querySelectorAll('.pricing-dropdown').forEach((dropdown, index) => {
     const button = dropdown.querySelector('.buy-btn');
     
-    // Удаляем старые обработчики
     const newButton = button.cloneNode(true);
     button.parentNode.replaceChild(newButton, button);
     
-    // Добавляем обработчики для новой кнопки
     newButton.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -752,7 +742,6 @@ document.addEventListener('DOMContentLoaded', function() {
       dropdown.classList.toggle('active');
     });
     
-    // Добавляем touch события для мобильных
     newButton.addEventListener('touchend', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -763,7 +752,6 @@ document.addEventListener('DOMContentLoaded', function() {
       dropdown.classList.toggle('active');
     });
 
-    // Обновляем обработчики для опций лицензий
     dropdown.querySelectorAll('.license-option').forEach(option => {
       const newOption = option.cloneNode(true);
       option.parentNode.replaceChild(newOption, option);
@@ -782,7 +770,6 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdown.classList.remove('active');
       });
       
-      // Добавляем touch события для опций
       newOption.addEventListener('touchend', function(e) {
         e.preventDefault();
         const licenseType = this.getAttribute('data-license');
@@ -800,7 +787,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Закрытие меню при клике вне его
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.pricing-dropdown')) {
       document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
@@ -818,7 +804,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Убираем фиксированное позиционирование для мобильных - оставляем как на ПК
+
+
 const mobileFixCSS = `
 @media (max-width: 768px) {
   .pricing-dropdown .pricing-options {
@@ -850,7 +837,6 @@ const mobileFixCSS = `
 }
 `;
 
-// Добавляем стили в head
 const style = document.createElement('style');
 style.textContent = mobileFixCSS;
 document.head.appendChild(style);
