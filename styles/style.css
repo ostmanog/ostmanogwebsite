@@ -608,6 +608,17 @@ h1:last-of-type {
   transition: transform 0.3s ease;
 }
 
+.currency {
+  margin-left: -0.4em; /* это примерно 1px, но адаптивно */
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  display: inline-block;
+  letter-spacing: -0.03em;
+}
+
+
+
 .pricing-dropdown.active .bi-chevron-down {
   transform: rotate(180deg);
 }
@@ -672,6 +683,14 @@ h1:last-of-type {
   letter-spacing: 0.5px;
 }
 
+
+.license-currency {
+  margin-left: 0.15em;
+  font-size: 1.2em;
+  opacity: 0.85;
+  transform: translateY(-0.02em);
+}
+
 .license-desc {
   color: #666;
   font-size: 11px;
@@ -688,6 +707,13 @@ h1:last-of-type {
   font-size: 11px;
   color: #666;
 }
+
+.apostrophe {
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+}
+
+
 
 .contact-hint .bi-telegram {
   color: #0088cc;
