@@ -804,7 +804,256 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Языковые данные
+const translations = {
+  ua: {
+    "instrumentals": "instrumentals",
+    "Жанри": "Жанри",
+    "Усі бити": "Усі бити",
+    "Треп": "Треп", 
+    "Реп": "Реп",
+    "Бум-беп": "Бум-беп",
+    "Придбати від": "Придбати від",
+    "Базові права": "Базові права",
+    "Ексклюзивні права": "Ексклюзивні права",
+    "Всі треки + ексклюзив": "Всі треки + ексклюзив",
+    "Виберіть ліцензію для зв'язку в Telegram": "Виберіть ліцензію для зв'язку в Telegram",
+    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (ліцензія на оренду у форматі WAV)",
+    "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)",
+    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)",
+     "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.": "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.",
+    "Включає:": "Включає:",
+    "• WAV-файл біта у найвищій якості;": "• WAV-файл біта у найвищій якості;",
+    "• Необмежене комерційне використання;": "• Необмежене комерційне використання;",
+    "• Ексклюзивні права;": "• Ексклюзивні права;",
+    "• Біт більше не продається іншим;": "• Біт більше не продається іншим;",
+    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.",
+    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.",
+    
+    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.",
+    "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;": "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;",
+    "• Біт видаляється з каталогу після покупки;": "• Біт видаляється з каталогу після покупки;",
+    "• Ідеально для студійного продакшну та міксу.": "• Ідеально для студійного продакшну та міксу."
+  },
+  en: {
+    "instrumentals": "instrumentals", 
+    "Жанри": "Genres",
+    "Усі бити": "All Beats",
+    "Треп": "Trap",
+    "Реп": "Rap",
+    "Бум-беп": "Boom Bap",
+    "Придбати від": "Buy from",
+    "Базові права": "Basic rights",
+    "Ексклюзивні права": "Exclusive rights", 
+    "Всі треки + ексклюзив": "All tracks + exclusive",
+    "Виберіть ліцензію для зв'язку в Telegram": "Select license for Telegram contact",
+    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (WAV format rental license)",
+    "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (exclusive license in WAV format)",
+    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (exclusive with separate tracks)",
+    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Get a high-quality beat in WAV format for commercial use. You can record your track, release it on all platforms and earn from monetization. The beat remains on sale for other artists.",
+    "• WAV-файл повної версії біта;": "• WAV file of the full beat version;",
+    "• Комерційне використання (Spotify, YouTube, Apple Music тощо);": "• Commercial use (Spotify, YouTube, Apple Music, etc.);",
+    "• До 100 000 стрімів;": "• Up to 100,000 streams;",
+    "• Право виступати з треком на концертах;": "• Right to perform the track at concerts;",
+    "• Не можна продавати або передавати права іншим.": "• Cannot sell or transfer rights to others.",
+    "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.": "Get exclusive rights to the beat. After purchase, it is removed from sale and becomes your full property. Ideal for artists who want unique sound that no one else will get.",
+    "Включає:": "Includes:",
+    "• WAV-файл біта у найвищій якості;": "• WAV file of the beat in highest quality;",
+    "• Необмежене комерційне використання;": "• Unlimited commercial use;",
+    "• Ексклюзивні права;": "• Exclusive rights;",
+    "• Біт більше не продається іншим;": "• Beat is no longer sold to others;",
+    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• You can register the track with distributors, collect royalties, etc.",
+    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• When purchasing exclusive, a legal contract is signed that secures copyright and terms of beat usage.",
+    
+    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "Exclusive license + all separate tracks (stems) for professional mixing. This is the maximum level of control over the sound - you can change the balance, effects, structure of the beat.",
+    "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;": "• All beat tracks (instruments, drums, bass, etc.) in WAV format;",
+    "• Біт видаляється з каталогу після покупки;": "• Beat is removed from catalog after purchase;",
+    "• Ідеально для студійного продакшну та міксу.": "• Ideal for studio production and mixing."
+  },
+  de: {
+    "instrumentals": "instrumentals",
+    "Жанри": "Genres", 
+    "Усі бити": "Alle Beats",
+    "Треп": "Trap",
+    "Реп": "Rap",
+    "Бум-беп": "Boom Bap",
+    "Придбати від": "Kaufen ab",
+    "Базові права": "Basisrechte",
+    "Ексклюзивні права": "Exklusivrechte",
+    "Всі треки + ексклюзив": "Alle Tracks + Exklusiv",
+    "Виберіть ліцензію для зв'язку в Telegram": "Lizenz für Telegram-Kontakt auswählen",
+    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (Lizenz zur Miete im WAV-Format)",
+    "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (exklusive Lizenz im WAV-Format)",
+    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (Exklusiv mit getrennten Spuren)",
+    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Erhalte einen hochwertigen Beat im WAV-Format für die kommerzielle Nutzung. Du kannst deinen Track aufnehmen, auf allen Plattformen veröffentlichen und mit Monetarisierung Geld verdienen. Der Beat bleibt für andere Künstler im Verkauf.",
+    "• WAV-файл повної версії біта;": "• WAV-Datei der vollständigen Beat-Version;",
+    "• Комерційне використання (Spotify, YouTube, Apple Music тощо);": "• Kommerzielle Nutzung (Spotify, YouTube, Apple Music, etc.);",
+    "• До 100 000 стрімів;": "• Bis zu 100.000 Streams;",
+    "• Право виступати з треком на концертах;": "• Recht, den Track bei Konzerten aufzuführen;",
+    "• Не можна продавати або передавати права іншим.": "• Kann Rechte nicht verkaufen oder an andere übertragen.",
+    "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.": "Erhalte exklusive Rechte am Beat. Nach dem Kauf wird er aus dem Verkauf entfernt und geht in dein volles Eigentum über. Ideal für Künstler, die einen einzigartigen Sound wollen, den niemand sonst bekommt.",
+    "Включає:": "Beinhaltet:",
+    "• WAV-файл біта у найвищій якості;": "• WAV-Datei des Beats in höchster Qualität;",
+    "• Необмежене комерційне використання;": "• Unbegrenzte kommerzielle Nutzung;",
+    "• Ексклюзивні права;": "• Exklusivrechte;",
+    "• Біт більше не продається іншим;": "• Beat wird nicht mehr an andere verkauft;",
+    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• Du kannst den Track bei Distributoren registrieren, Tantiemen sammeln usw.",
+    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• Beim Kauf von Exklusiv wird ein rechtlicher Vertrag unterzeichnet, der Urheberrechte und Nutzungsbedingungen des Beats sichert.",
+    
+    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "Exklusive Lizenz + alle einzelnen Tracks (Stems) für professionelles Mixing. Dies ist die maximale Kontrolle über den Sound - du kannst das Gleichgewicht, Effekte, Struktur des Beats ändern.",
+    "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;": "• Alle Beat-Tracks (Instrumente, Drums, Bass etc.) im WAV-Format;",
+    "• Біт видаляється з каталогу після покупки;": "• Beat wird nach dem Kauf aus dem Katalog entfernt;",
+    "• Ідеально для студійного продакшну та міксу.": "• Ideal für Studio-Produktion und Mixing."
+  }
+};
 
+// Функция смены языка
+function changeLanguage(lang) {
+  // Обновляем активные кнопки
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(btn => {
+    btn.classList.add('active');
+  });
+  
+  const translation = translations[lang];
+  
+  // Обновляем текст на странице
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.getAttribute('data-translate');
+    if (translation[key]) {
+      element.textContent = translation[key];
+    }
+  });
+  
+  // Сохраняем выбор языка
+  localStorage.setItem('preferredLanguage', lang);
+}
+
+// Инициализация языкового переключателя
+function initLanguageSwitcher() {
+  // Проверяем сохраненный язык
+  const savedLang = localStorage.getItem('preferredLanguage') || 'ua';
+  
+  // Устанавливаем сохраненный язык
+  changeLanguage(savedLang);
+  
+  // Обработчики для кнопок выбора языка
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const lang = this.getAttribute('data-lang');
+      changeLanguage(lang);
+    });
+  });
+}
+
+// Пранк-заставка
+function initPrankOverlay() {
+  const overlay = document.getElementById('prank-overlay');
+  const okBtn = document.getElementById('prank-ok-btn');
+  const countdownEl = document.getElementById('countdown');
+  const randomIpEl = document.getElementById('random-ip');
+  const deviceTypeEl = document.getElementById('device-type');
+  
+  // Генерируем случайный IP
+  function generateRandomIP() {
+    return Math.floor(Math.random() * 255);
+  }
+  
+  // Определяем тип устройства
+  function getDeviceType() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return isMobile ? 'Мобильное устройство' : 'Компьютер';
+  }
+  
+  // Запускаем обратный отсчет
+  function startCountdown() {
+    let seconds = 10;
+    const countdownInterval = setInterval(() => {
+      countdownEl.textContent = seconds;
+      seconds--;
+      
+      if (seconds < 0) {
+        clearInterval(countdownInterval);
+        // Если не нажали кнопку - все равно скрываем
+        hidePrankOverlay();
+      }
+    }, 1000);
+  }
+  
+  // Скрываем заставку
+  function hidePrankOverlay() {
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      // Запускаем нормальную инициализацию сайта
+      initNormalSite();
+    }, 500);
+  }
+  
+  // Инициализация нормального сайта
+  function initNormalSite() {
+    // Здесь твой обычный код инициализации
+    console.log('Сайт загружен нормально');
+  }
+  
+  // Инициализация пранка
+  function initPrank() {
+    // Устанавливаем случайные данные
+    randomIpEl.textContent = generateRandomIP();
+    deviceTypeEl.textContent = getDeviceType();
+    
+    // Запускаем отсчет
+    startCountdown();
+    
+    // Обработчик кнопки
+    okBtn.addEventListener('click', hidePrankOverlay);
+    
+    // Добавляем звук (опционально)
+    playPrankSound();
+  }
+  
+  // Звук для пранка (опционально)
+  function playPrankSound() {
+    try {
+      const audio = new Audio();
+      audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3";
+      audio.volume = 0.3;
+      audio.play();
+    } catch (error) {
+      console.log("Звук не воспроизводится");
+    }
+  }
+  
+  // Запускаем пранк при загрузке
+  setTimeout(initPrank, 500);
+}
+
+// Запускаем когда DOM загружен
+document.addEventListener('DOMContentLoaded', function() {
+  // Сначала показываем пранк, потом остальную инициализацию
+  initPrankOverlay();
+});
+
+// Отключаем скролл во время пранка
+document.body.style.overflow = 'hidden';
+
+// После скрытия пранка возвращаем скролл
+function initNormalSite() {
+  document.body.style.overflow = '';
+  // Твоя обычная инициализация
+  if (typeof initLanguageSwitcher === 'function') initLanguageSwitcher();
+  // другие твои функции инициализации...
+}
+
+// Добавляем в DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  initLanguageSwitcher();
+});
 
 const mobileFixCSS = `
 @media (max-width: 768px) {
