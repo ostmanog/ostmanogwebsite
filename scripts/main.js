@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Языковые данные
+
 const translations = {
   ua: {
     "instrumentals": "instrumentals",
@@ -853,28 +853,28 @@ const translations = {
     "Ексклюзивні права": "Exclusive rights", 
     "Всі треки + ексклюзив": "All tracks + exclusive",
     "Виберіть ліцензію для зв'язку в Telegram": "Select license for Telegram contact",
-    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (WAV format rental license)",
+    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (license for rental in WAV format)",
     "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (exclusive license in WAV format)",
-    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (exclusive with separate tracks)",
-    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Get a high-quality beat in WAV format for commercial use. You can record your track, release it on all platforms and earn from monetization. The beat remains on sale for other artists.",
-    "• WAV-файл повної версії біта;": "• WAV file of the full beat version;",
+    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (exclusive license with separated stems))",
+    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Get exclusive rights to the beat. After purchase, it is removed from sale and becomes your full property. Perfect for artists who want a unique sound that no one else will have.",
+    "• WAV-файл повної версії біта;": "• Full version WAV file of the beat;",
     "• Комерційне використання (Spotify, YouTube, Apple Music тощо);": "• Commercial use (Spotify, YouTube, Apple Music, etc.);",
     "• До 100 000 стрімів;": "• Up to 100,000 streams;",
     "• Право виступати з треком на концертах;": "• Right to perform the track at concerts;",
-    "• Не можна продавати або передавати права іншим.": "• Cannot sell or transfer rights to others.",
+    "• Не можна продавати або передавати права іншим.": "• You cannot sell or transfer the rights to others.",
     "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.": "Get exclusive rights to the beat. After purchase, it is removed from sale and becomes your full property. Ideal for artists who want unique sound that no one else will get.",
     "Включає:": "Includes:",
-    "• WAV-файл біта у найвищій якості;": "• WAV file of the beat in highest quality;",
+    "• WAV-файл біта у найвищій якості;": "• Highest-quality WAV file of the beat;",
     "• Необмежене комерційне використання;": "• Unlimited commercial use;",
     "• Ексклюзивні права;": "• Exclusive rights;",
-    "• Біт більше не продається іншим;": "• Beat is no longer sold to others;",
-    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• You can register the track with distributors, collect royalties, etc.",
-    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• When purchasing exclusive, a legal contract is signed that secures copyright and terms of beat usage.",
+    "• Біт більше не продається іншим;": "• The beat will no longer be sold to others;",
+    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• You can register the track with distributors, collect royalties, etc.;",
+    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• Upon purchasing the exclusive license, a legal contract is signed to confirm copyright and usage terms of the beat.",
     
-    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "Exclusive license + all separate tracks (stems) for professional mixing. This is the maximum level of control over the sound - you can change the balance, effects, structure of the beat.",
+    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "An exclusive license plus all individual tracks (stems) for professional mixing. This is the highest level of control over the sound — you can adjust balance, effects, and the structure of the beat.",
     "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;": "• All beat tracks (instruments, drums, bass, etc.) in WAV format;",
-    "• Біт видаляється з каталогу після покупки;": "• Beat is removed from catalog after purchase;",
-    "• Ідеально для студійного продакшну та міксу.": "• Ideal for studio production and mixing."
+    "• Біт видаляється з каталогу після покупки;": "• The beat is removed from the catalog after purchase;",
+    "• Ідеально для студійного продакшну та міксу.": "• Perfect for studio production and mixing;"
   },
   de: {
     "instrumentals": "instrumentals",
@@ -888,34 +888,32 @@ const translations = {
     "Ексклюзивні права": "Exklusivrechte",
     "Всі треки + ексклюзив": "Alle Tracks + Exklusiv",
     "Виберіть ліцензію для зв'язку в Telegram": "Lizenz für Telegram-Kontakt auswählen",
-    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (Lizenz zur Miete im WAV-Format)",
+    "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (Lizenz zur Nutzung im WAV-Format)",
     "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (exklusive Lizenz im WAV-Format)",
-    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (Exklusiv mit getrennten Spuren)",
-    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Erhalte einen hochwertigen Beat im WAV-Format für die kommerzielle Nutzung. Du kannst deinen Track aufnehmen, auf allen Plattformen veröffentlichen und mit Monetarisierung Geld verdienen. Der Beat bleibt für andere Künstler im Verkauf.",
+    "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (exklusive Lizenz mit getrennten Spuren)",
+    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Erhalte exklusive Rechte an dem Beat. Nach dem Kauf wird er aus dem Verkauf genommen und geht vollständig in deinen Besitz über. Ideal für Künstler, die einen einzigartigen Sound möchten, den niemand sonst bekommt.",
     "• WAV-файл повної версії біта;": "• WAV-Datei der vollständigen Beat-Version;",
-    "• Комерційне використання (Spotify, YouTube, Apple Music тощо);": "• Kommerzielle Nutzung (Spotify, YouTube, Apple Music, etc.);",
+    "• Комерційне використання (Spotify, YouTube, Apple Music тощо);": "• Kommerzielle Nutzung (Spotify, YouTube, Apple Music usw.);",
     "• До 100 000 стрімів;": "• Bis zu 100.000 Streams;",
     "• Право виступати з треком на концертах;": "• Recht, den Track bei Konzerten aufzuführen;",
-    "• Не можна продавати або передавати права іншим.": "• Kann Rechte nicht verkaufen oder an andere übertragen.",
+    "• Не можна продавати або передавати права іншим.": "• Weiterverkauf oder Übertragung der Rechte an Dritte ist nicht erlaubt.",
     "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.": "Erhalte exklusive Rechte am Beat. Nach dem Kauf wird er aus dem Verkauf entfernt und geht in dein volles Eigentum über. Ideal für Künstler, die einen einzigartigen Sound wollen, den niemand sonst bekommt.",
     "Включає:": "Beinhaltet:",
     "• WAV-файл біта у найвищій якості;": "• WAV-Datei des Beats in höchster Qualität;",
     "• Необмежене комерційне використання;": "• Unbegrenzte kommerzielle Nutzung;",
-    "• Ексклюзивні права;": "• Exklusivrechte;",
-    "• Біт більше не продається іншим;": "• Beat wird nicht mehr an andere verkauft;",
-    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• Du kannst den Track bei Distributoren registrieren, Tantiemen sammeln usw.",
-    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• Beim Kauf von Exklusiv wird ein rechtlicher Vertrag unterzeichnet, der Urheberrechte und Nutzungsbedingungen des Beats sichert.",
+    "• Ексклюзивні права;": "• Exklusive Rechte;",
+    "• Біт більше не продається іншим;": "• Der Beat wird nicht mehr an andere verkauft;",
+    "• Можеш реєструвати трек у дистриб'юторах, збирати роялті тощо.": "• Du kannst den Track bei Distributoren registrieren, Tantiemen sammeln usw.;",
+    "• При покупці ексклюзива підписується юридичний контракт, який закріплює авторські права та умови використання бита.": "• Beim Kauf der Exklusivlizenz wird ein rechtsgültiger Vertrag unterzeichnet, der die Urheberrechte und Nutzungsbedingungen des Beats festlegt.",
     
-    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "Exklusive Lizenz + alle einzelnen Tracks (Stems) für professionelles Mixing. Dies ist die maximale Kontrolle über den Sound - du kannst das Gleichgewicht, Effekte, Struktur des Beats ändern.",
-    "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;": "• Alle Beat-Tracks (Instrumente, Drums, Bass etc.) im WAV-Format;",
-    "• Біт видаляється з каталогу після покупки;": "• Beat wird nach dem Kauf aus dem Katalog entfernt;",
-    "• Ідеально для студійного продакшну та міксу.": "• Ideal für Studio-Produktion und Mixing."
+    "Ексклюзивна ліцензія + усі окремі треки (stems) для професійного зведення. Це максимальний рівень контролю над звучанням — ти можеш змінювати баланс, ефекти, структуру біта.": "Exklusive Lizenz plus alle einzelnen Spuren (Stems) für professionelles Mixing. Das ist die höchste Kontrolle über den Sound – du kannst Balance, Effekte und die Struktur des Beats anpassen.",
+    "• Усі доріжки біта (інструменти, ударні, бас тощо) у форматі WAV;": "• Alle Spuren des Beats (Instrumente, Drums, Bass usw.) im WAV-Format;",
+    "• Біт видаляється з каталогу після покупки;": "• Der Beat wird nach dem Kauf aus dem Katalog entfernt;",
+    "• Ідеально для студійного продакшну та міксу.": "• Ideal für Studio-Production und Mixing;"
   }
 };
 
-// Функция смены языка
 function changeLanguage(lang) {
-  // Обновляем активные кнопки
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.remove('active');
   });
@@ -926,7 +924,6 @@ function changeLanguage(lang) {
   
   const translation = translations[lang];
   
-  // Обновляем текст на странице
   document.querySelectorAll('[data-translate]').forEach(element => {
     const key = element.getAttribute('data-translate');
     if (translation[key]) {
@@ -934,19 +931,14 @@ function changeLanguage(lang) {
     }
   });
   
-  // Сохраняем выбор языка
   localStorage.setItem('preferredLanguage', lang);
 }
 
-// Инициализация языкового переключателя
 function initLanguageSwitcher() {
-  // Проверяем сохраненный язык
   const savedLang = localStorage.getItem('preferredLanguage') || 'ua';
   
-  // Устанавливаем сохраненный язык
   changeLanguage(savedLang);
   
-  // Обработчики для кнопок выбора языка
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const lang = this.getAttribute('data-lang');
@@ -956,7 +948,7 @@ function initLanguageSwitcher() {
 }
 
 
-// Добавляем в DOMContentLoaded
+
 document.addEventListener('DOMContentLoaded', function() {
   initLanguageSwitcher();
 });
