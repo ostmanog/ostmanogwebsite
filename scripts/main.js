@@ -821,6 +821,12 @@ const translations = {
     "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (ліцензія на оренду у форматі WAV)",
     "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)",
     "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)",
+    "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.": "Отримай високоякісний біт у форматі WAV для комерційного використання. Можеш записати свій трек, випустити його на всіх платформах і заробляти на монетизації. Біт залишається у продажу для інших артистів.",
+    "• WAV-файл повної версії біта;": "• WAV-файл повної версії біта;",
+    "• Комерційне використання (Spotify, YouTube, Apple Music тощо);": "• Комерційне використання (Spotify, YouTube, Apple Music тощо);",
+    "• До 100 000 стрімів;": "• До 100 000 стрімів;",
+    "• Право виступати з треком на концертах;": "• Право виступати з треком на концертах;",
+    "• Не можна продавати або передавати права іншим.": "• Не можна продавати або передавати права іншим.",
      "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.": "Отримай ексклюзивні права на біт. Після покупки він видаляється з продажу та переходить у твоє повне користування. Ідеально для артистів, які хочуть унікальне звучання, яке більше ніхто не отримає.",
     "Включає:": "Включає:",
     "• WAV-файл біта у найвищій якості;": "• WAV-файл біта у найвищій якості;",
@@ -949,106 +955,6 @@ function initLanguageSwitcher() {
   });
 }
 
-// Пранк-заставка
-function initPrankOverlay() {
-  const overlay = document.getElementById('prank-overlay');
-  const okBtn = document.getElementById('prank-ok-btn');
-  const countdownEl = document.getElementById('countdown');
-  const randomIpEl = document.getElementById('random-ip');
-  const deviceTypeEl = document.getElementById('device-type');
-  
-  // Генерируем случайный IP
-  function generateRandomIP() {
-    return Math.floor(Math.random() * 255);
-  }
-  
-  // Определяем тип устройства
-  function getDeviceType() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    return isMobile ? 'Мобильное устройство' : 'Компьютер';
-  }
-  
-  // Запускаем обратный отсчет
-  function startCountdown() {
-    let seconds = 10;
-    const countdownInterval = setInterval(() => {
-      countdownEl.textContent = seconds;
-      seconds--;
-      
-      if (seconds < 0) {
-        clearInterval(countdownInterval);
-        // Если не нажали кнопку - все равно скрываем
-        hidePrankOverlay();
-      }
-    }, 1000);
-  }
-  
-  // Скрываем заставку
-  function hidePrankOverlay() {
-    overlay.style.opacity = '0';
-    overlay.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-      overlay.style.display = 'none';
-      // Запускаем нормальную инициализацию сайта
-      initNormalSite();
-    }, 500);
-  }
-  
-  // Инициализация нормального сайта
-  function initNormalSite() {
-    // Здесь твой обычный код инициализации
-    console.log('Сайт загружен нормально');
-  }
-  
-  // Инициализация пранка
-  function initPrank() {
-    // Устанавливаем случайные данные
-    randomIpEl.textContent = generateRandomIP();
-    deviceTypeEl.textContent = getDeviceType();
-    
-    // Запускаем отсчет
-    startCountdown();
-    
-    // Обработчик кнопки
-    okBtn.addEventListener('click', hidePrankOverlay);
-    
-    // Добавляем звук (опционально)
-    playPrankSound();
-  }
-  
-  // Звук для пранка (опционально)
-  function playPrankSound() {
-    try {
-      const audio = new Audio();
-      audio.src = "https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3";
-      audio.volume = 0.3;
-      audio.play();
-    } catch (error) {
-      console.log("Звук не воспроизводится");
-    }
-  }
-  
-  // Запускаем пранк при загрузке
-  setTimeout(initPrank, 500);
-}
-
-// Запускаем когда DOM загружен
-document.addEventListener('DOMContentLoaded', function() {
-  // Сначала показываем пранк, потом остальную инициализацию
-  initPrankOverlay();
-});
-
-// Отключаем скролл во время пранка
-document.body.style.overflow = 'hidden';
-
-// После скрытия пранка возвращаем скролл
-function initNormalSite() {
-  document.body.style.overflow = '';
-  // Твоя обычная инициализация
-  if (typeof initLanguageSwitcher === 'function') initLanguageSwitcher();
-  // другие твои функции инициализации...
-}
 
 // Добавляем в DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
