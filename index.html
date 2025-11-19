@@ -9,6 +9,7 @@
     content="OstmanOG - сайт продакшн битмейкера Ostman'a">
     <meta name='Keywords' Content='Ostman, остменбитз, остмен, ostman instrumentals, трэп биты, биты остмен'>
     <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/songs-data.js"></script>
     <link rel="shortcut icon" href="assets/images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <title>OSTMAN.OG</title>
@@ -45,364 +46,33 @@
     <button class="genre-filter" data-genre="boom-bap" data-translate="Бум-беп">Бум-беп</button>
   </div>
 </div>
-  <div class="beats">
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="1"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">No 1</h2>
-        <p>Type: Trap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
+    <div class="beats" id="beats-container">
     </div>
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="2"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">ya medaly</h2>
-        <p>Type: Trap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="3"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">No 3</h2>
-        <p>Type: Rap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="4"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">No 2</h2>
-        <p>Type: Rap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="5"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">trap 4</h2>
-        <p>Type: Boom-bap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="6"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">litovsky</h2>
-        <p>Type: Trap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="7"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">knof</h2>
-        <p>Type: Trap</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="image-info-container">
-      <div class="image-container">
-        <img src="assets/images/8.jpg" class="imagemusic">
-        <i class="bi playListPlay bi-play-circle" id="8"></i>
-      </div>
-      <div class="info">
-        <h2 id="title">cool</h2>
-        <p>Type: old school</p>
-        <div class="pricing-dropdown">
-          <button class="buy-btn">
-            💎 <span data-translate="Придбати від">Придбати від</span> 10<span class="currency">€</span>
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <div class="pricing-options">
-            <div class="license-option" data-license="wav-lease" data-price="10">
-              <div class="license-info">
-                <span class="license-name">WAV Lease</span>
-                <span class="license-price">10<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Базові права">Базові права</div>
-            </div>
-            <div class="license-option" data-license="wav-exclusive" data-price="20">
-              <div class="license-info">
-                <span class="license-name">WAV Exclusive</span>
-                <span class="license-price">20<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Ексклюзивні права">Ексклюзивні права</div>
-            </div>
-            <div class="license-option" data-license="trackout" data-price="50">
-              <div class="license-info">
-                <span class="license-name">Track Out Exclusive</span>
-                <span class="license-price">50<span class="license-currency">€</span></span>
-              </div>
-              <div class="license-desc" data-translate="Всі треки + ексклюзив">Всі треки + ексклюзив</div>
-            </div>
-            <div class="contact-hint">
-  <i class="bi bi-telegram"></i>
-  <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
-</div>
+
+<template id="beat-template">
+  <div class="image-info-container">
+    <div class="image-container">
+      <img src="" class="imagemusic">
+      <i class="bi playListPlay bi-play-circle"></i>
+    </div>
+    <div class="info">
+      <h2 class="title"></h2>
+      <p class="type"></p>
+      <div class="pricing-dropdown">
+        <button class="buy-btn">
+          <span class="buy-text"></span>
+          <span class="min-price"></span><span class="currency">€</span>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+        <div class="pricing-options">
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 
 <div id="price">
 <div class="price">

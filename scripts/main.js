@@ -152,91 +152,162 @@ function scrollToContact() {
     }
 }
 
-const songs = [
-    {
-        id:'1',
-        songName: `No 1`,
-        poster: "assets/images/5.png",
-        genre: "trap",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/1.mp3"
-    },
-    {
-        id:'2',
-        songName: `ya medaly`,
-        poster: "assets/images/5.png", 
-        genre: "trap",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/2.mp3"
-    },
-    {
-        id:'3',
-        songName: `No 3`,
-        poster: "assets/images/6.png",
-        genre: "rap",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/3.mp3"
-    },
-    {
-        id:'4', 
-        songName: `No 2`,
-        poster: "assets/images/6.png",
-        genre: "rap",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/4.mp3"
-    },
-    {
-        id:'5',
-        songName: `trap 4`,
-        poster: "assets/images/7.png",
-        genre: "boom-bap", 
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/5.mp3"
-    },
-    {
-        id:'6',
-        songName: `litovsky`,
-        poster: "assets/images/7.png",
-        genre: "trap",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/6.mp3"
-    },
-    {
-        id:'7',
-        songName: `knof`,
-        poster: "assets/images/8.png", 
-        genre: "trap",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/7.mp3"
-    },
-    {
-        id:'8',
-        songName: `cool`,
-        poster: "assets/images/5.png",
-        genre: "old school",
-        url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/1.mp3"
+
+function generateBeats() {
+  const beatsContainer = document.getElementById('beats-container');
+  const template = document.getElementById('beat-template');
+  
+  if (!beatsContainer || !template) {
+    console.error('Не найден beats-container или beat-template');
+    return;
+  }
+  
+  beatsContainer.innerHTML = '';
+  
+  songs.forEach((song) => {
+    const clone = template.content.cloneNode(true);
+    
+    const container = clone.querySelector('.image-info-container');
+    container.setAttribute('data-genre', song.genre);
+    container.setAttribute('data-id', song.id);
+    
+    const img = clone.querySelector('.imagemusic');
+    img.src = song.poster;
+    img.alt = song.songName;
+    
+    const playBtn = clone.querySelector('.playListPlay');
+    playBtn.id = song.id;
+    
+    const title = clone.querySelector('.title');
+    title.textContent = song.songName;
+    
+    const type = clone.querySelector('.type');
+    type.textContent = `Type: ${getGenreDisplayName(song.genre)}`;
+    
+    const buyText = clone.querySelector('.buy-text');
+    const minPrice = clone.querySelector('.min-price');
+    
+    buyText.textContent = song.buyButton.text;
+    minPrice.textContent = song.buyButton.minPrice;
+    
+    generateLicenseOptions(clone, song);
+    
+    beatsContainer.appendChild(clone);
+  });
+  
+  initBeatInteractions();
+}
+
+function generateLicenseOptions(clone, song) {
+  const pricingOptions = clone.querySelector('.pricing-options');
+  pricingOptions.innerHTML = '';
+  
+  song.licenses.forEach((license) => {
+    const licenseOption = document.createElement('div');
+    licenseOption.className = 'license-option';
+    licenseOption.setAttribute('data-license', license.type);
+    licenseOption.setAttribute('data-price', license.price);
+    
+    licenseOption.innerHTML = `
+      <div class="license-info">
+        <span class="license-name">${license.name}</span>
+        <span class="license-price">${license.price}<span class="license-currency">€</span></span>
+      </div>
+      <div class="license-desc">${license.description}</div>
+    `;
+    
+    pricingOptions.appendChild(licenseOption);
+  });
+  
+  const contactHint = document.createElement('div');
+  contactHint.className = 'contact-hint';
+  contactHint.innerHTML = `
+    <i class="bi bi-telegram"></i>
+    <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
+  `;
+  pricingOptions.appendChild(contactHint);
+}
+
+function getGenreDisplayName(genre) {
+  const genreMap = {
+    'trap': 'Trap',
+    'rap': 'Rap',
+    'boom-bap': 'Boom Bap', 
+    'old school': 'Old School'
+  };
+  return genreMap[genre] || genre;
+}
+
+function initBeatInteractions() {
+  document.querySelectorAll('.playListPlay').forEach(element => {
+    element.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const trackIndex = songs.findIndex(song => song.id === element.id);
+      if (trackIndex !== -1) playTrack(trackIndex);
+    });
+  });
+  
+  document.querySelectorAll('.pricing-dropdown').forEach((dropdown) => {
+    const button = dropdown.querySelector('.buy-btn');
+    
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.querySelectorAll('.pricing-dropdown').forEach(other => {
+        if (other !== dropdown) other.classList.remove('active');
+      });
+      dropdown.classList.toggle('active');
+    });
+    
+    dropdown.querySelectorAll('.license-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const licenseType = this.getAttribute('data-license');
+        const price = this.getAttribute('data-price');
+        const licenseName = this.querySelector('.license-name').textContent;
+        const beatTitle = dropdown.closest('.image-info-container').querySelector('.title').textContent;
+        
+        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
+        const encodedMessage = encodeURIComponent(message);
+        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
+        
+        window.open(telegramUrl, '_blank');
+        dropdown.classList.remove('active');
+      });
+    });
+  });
+  
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.pricing-dropdown')) {
+      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+      });
     }
-];
-
-
+  });
+}
 
 
 function filterBeats(genre) {
-    const beatItems = document.querySelectorAll('.image-info-container');
-    const filterButtons = document.querySelectorAll('.genre-filter');
-    
-    filterButtons.forEach(button => {
-        button.classList.remove('active');
-    });
-    
-
-    event.target.classList.add('active');
-    
-    beatItems.forEach((item, index) => {
-        if (genre === 'all') {
-            item.style.display = 'flex';
-        } else {
-            const songGenre = songs[index]?.genre;
-            if (songGenre === genre) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        }
-    });
+  const beatItems = document.querySelectorAll('.image-info-container');
+  const filterButtons = document.querySelectorAll('.genre-filter');
+  
+  filterButtons.forEach(button => {
+    button.classList.remove('active');
+  });
+  
+  event.target.classList.add('active');
+  
+  beatItems.forEach((item) => {
+    const songGenre = item.getAttribute('data-genre');
+    if (genre === 'all') {
+      item.style.display = 'flex';
+    } else {
+      if (songGenre === genre) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    }
+  });
 }
 
 
@@ -260,75 +331,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-Array.from(document.getElementsByClassName('image-info-container')).forEach((container, i)=>{
-  const img = container.querySelector('.image-container img');
-  const title = container.querySelector('.info h2');
-  
-  if (img && songs[i]) {
-    img.src = songs[i].poster;
-  }
-  if (title && songs[i]) {
-    title.innerHTML = songs[i].songName;
-  }
-  
-  if (songs[i]) {
-    container.setAttribute('data-genre', songs[i].genre);
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.pricing-dropdown').forEach((dropdown, index) => {
-    const button = dropdown.querySelector('.buy-btn');
-    
-    const beatTitleElement = dropdown.closest('.image-info-container').querySelector('#title');
-    const beatTitle = beatTitleElement ? beatTitleElement.textContent : 'Unknown Beat';
-    
-    button.addEventListener('click', function(e) {
-      e.stopPropagation();
-      document.querySelectorAll('.pricing-dropdown').forEach(other => {
-        if (other !== dropdown) other.classList.remove('active');
-      });
-      dropdown.classList.toggle('active');
-    });
-    
-
-    dropdown.querySelectorAll('.license-option').forEach(option => {
-      option.addEventListener('click', function() {
-        const licenseType = this.getAttribute('data-license');
-        const price = this.getAttribute('data-price');
-        const licenseName = this.querySelector('.license-name').textContent;
-        
-
-        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
-        const encodedMessage = encodeURIComponent(message);
-        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
-        
-
-        window.open(telegramUrl, '_blank');
-        
- 
-        dropdown.classList.remove('active');
-      });
-    });
-  });
 
 
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.pricing-dropdown')) {
-      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
-});
+
 
 
 
@@ -385,7 +391,7 @@ music.addEventListener('ended', () => {
 });
 
 function initNewPlayer() {
-  updateVolume(70);
+  updateVolume(50);
 }
 
 function updateTrackInfo(index) {
@@ -526,28 +532,11 @@ music.addEventListener('pause', () => cancelAnimationFrame(progressAnimationFram
 
 
 music.addEventListener('ended', () => {
-  let newIndex = currentTrackIndex + 1;
-  if (newIndex >= songs.length) newIndex = 0;
-  playTrack(newIndex);
+  music.currentTime = 0;
+  music.play();
 });
 
-Array.from(document.getElementsByClassName('playListPlay')).forEach((element, index) => {
-  element.addEventListener('click', (e) => {
-    e.stopPropagation();
-    
-    const elementId = element.id;
-    console.log('Clicked element ID:', elementId, 'Array index:', index);
-    
-    const trackIndex = songs.findIndex(song => song.id === elementId);
-    console.log('Found track index:', trackIndex);
-    
-    if (trackIndex !== -1) {
-      playTrack(trackIndex);
-    } else {
-      console.error('Трек не найден для ID:', elementId);
-    }
-  });
-});
+
 
 function toggleMute() {
   if (music.volume > 0) {
@@ -725,84 +714,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initNewPlayer();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.pricing-dropdown').forEach((dropdown, index) => {
-    const button = dropdown.querySelector('.buy-btn');
-    
-    const newButton = button.cloneNode(true);
-    button.parentNode.replaceChild(newButton, button);
-    
-    newButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      document.querySelectorAll('.pricing-dropdown').forEach(other => {
-        if (other !== dropdown) other.classList.remove('active');
-      });
-      dropdown.classList.toggle('active');
-    });
-    
-    newButton.addEventListener('touchend', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      document.querySelectorAll('.pricing-dropdown').forEach(other => {
-        if (other !== dropdown) other.classList.remove('active');
-      });
-      dropdown.classList.toggle('active');
-    });
-
-    dropdown.querySelectorAll('.license-option').forEach(option => {
-      const newOption = option.cloneNode(true);
-      option.parentNode.replaceChild(newOption, option);
-      
-      newOption.addEventListener('click', function() {
-        const licenseType = this.getAttribute('data-license');
-        const price = this.getAttribute('data-price');
-        const licenseName = this.querySelector('.license-name').textContent;
-        const beatTitle = dropdown.closest('.image-info-container').querySelector('#title').textContent;
-        
-        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
-        const encodedMessage = encodeURIComponent(message);
-        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
-        
-        window.open(telegramUrl, '_blank');
-        dropdown.classList.remove('active');
-      });
-      
-      newOption.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        const licenseType = this.getAttribute('data-license');
-        const price = this.getAttribute('data-price');
-        const licenseName = this.querySelector('.license-name').textContent;
-        const beatTitle = dropdown.closest('.image-info-container').querySelector('#title').textContent;
-        
-        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
-        const encodedMessage = encodeURIComponent(message);
-        const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
-        
-        window.open(telegramUrl, '_blank');
-        dropdown.classList.remove('active');
-      });
-    });
-  });
-
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.pricing-dropdown')) {
-      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
-
-  document.addEventListener('touchstart', function(e) {
-    if (!e.target.closest('.pricing-dropdown')) {
-      document.querySelectorAll('.pricing-dropdown').forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
-});
 
 
 const translations = {
@@ -950,7 +861,8 @@ function initLanguageSwitcher() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  initLanguageSwitcher();
+    generateBeats();
+    initLanguageSwitcher();
 });
 
 const mobileFixCSS = `

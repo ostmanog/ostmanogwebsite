@@ -329,6 +329,7 @@ h1:last-of-type {
   transform: translate(-50%, -50%);
   color: white;
   cursor: pointer;
+  opacity: 85%;
 }
 
 .info {
