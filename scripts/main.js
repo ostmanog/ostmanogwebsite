@@ -185,6 +185,8 @@ function generateBeats() {
     type.textContent = `Type: ${getGenreDisplayName(song.genre)}`;
     
     const buyText = clone.querySelector('.buy-text');
+    buyText.setAttribute('data-translate', "Придбати від");
+    buyText.textContent = song.buyButton.text;
     const minPrice = clone.querySelector('.min-price');
     
     buyText.textContent = song.buyButton.text;
@@ -213,21 +215,21 @@ function generateLicenseOptions(clone, song) {
         <span class="license-name">${license.name}</span>
         <span class="license-price">${license.price}<span class="license-currency">€</span></span>
       </div>
-      <div class="license-desc">${license.description}</div>
+      <div class="license-desc" data-translate="${license.description}">${license.description}</div>
     `;
     
     pricingOptions.appendChild(licenseOption);
   });
   
   const contactHint = document.createElement('div');
-  contactHint.className = 'contact-hint';
-  contactHint.innerHTML = `
-    <i class="bi bi-telegram"></i>
-    <span data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв'язку в Telegram</span>
-  `;
+contactHint.className = 'contact-hint';
+contactHint.innerHTML = `
+  <i class="bi bi-telegram"></i>
+  <span class="contact-text" data-translate="Виберіть ліцензію для зв'язку в Telegram">Виберіть ліцензію для зв’язку в Telegram</span>
+`;
   pricingOptions.appendChild(contactHint);
 }
-
+    
 function getGenreDisplayName(genre) {
   const genreMap = {
     'trap': 'Trap',
@@ -329,13 +331,6 @@ document.addEventListener('DOMContentLoaded', function() {
         allButton.classList.add('active');
     }
 });
-
-
-
-
-
-
-
 
 
 
@@ -728,7 +723,7 @@ const translations = {
     "Базові права": "Базові права",
     "Ексклюзивні права": "Ексклюзивні права",
     "Всі треки + ексклюзив": "Всі треки + ексклюзив",
-    "Виберіть ліцензію для зв'язку в Telegram": "Виберіть ліцензію для зв'язку в Telegram",
+    "Виберіть ліцензію для зв'язку в Telegram": "Виберіть ліцензію для зв’язку в Telegram",
     "🎧 WAV Lease (ліцензія на оренду у форматі WAV)": "🎧 WAV Lease (ліцензія на оренду у форматі WAV)",
     "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)": "💿 WAV Exclusive (ексклюзивна ліцензія у форматі WAV)",
     "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)": "🎚️ Track Out Exclusive (ексклюзив із розділеними доріжками)",

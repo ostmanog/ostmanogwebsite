@@ -803,11 +803,9 @@ h1:last-of-type {
   color: #666;
 }
 
-.apostrophe {
-  font-family: Arial, sans-serif;
-  font-weight: normal;
+.contact-text {
+  font-family: Arial, sans-serif !important;
 }
-
 
 
 .contact-hint .bi-telegram {
