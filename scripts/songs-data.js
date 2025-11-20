@@ -2,7 +2,7 @@ const songs = [
   {
     id: '1',
     songName: `B 1`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/1.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -14,8 +14,8 @@ const songs = [
   },
   {
     id: '2', 
-    songName: `P 2`,
-    poster: "assets/images/5.png",
+    songName: `P 1`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/2.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -28,8 +28,8 @@ const songs = [
   {
     id: '3', 
     songName: `B 2`,
-    poster: "assets/images/5.png",
-    genre: "Basic beats ",
+    poster: "assets/images/b.png",
+    genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/3.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
     licenses: [
@@ -41,7 +41,7 @@ const songs = [
   {
     id: '4', 
     songName: `S 1`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/4.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -54,7 +54,7 @@ const songs = [
   {
     id: '5', 
     songName: `B 3`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/5.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -66,8 +66,8 @@ const songs = [
   },
   {
     id: '6', 
-    songName: `S 3`,
-    poster: "assets/images/5.png",
+    songName: `S 2`,
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/6.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -79,8 +79,8 @@ const songs = [
   },
   {
     id: '7', 
-    songName: `S 4`,
-    poster: "assets/images/5.png",
+    songName: `S 3`,
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/7.mp3",
     buyButton: { text: "Придбати від", minPrice: 30 },
@@ -93,7 +93,7 @@ const songs = [
   {
     id: '8', 
     songName: `b 4`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/8.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -105,8 +105,8 @@ const songs = [
   },
   {
     id: '9', 
-    songName: `P 3`,
-    poster: "assets/images/5.png",
+    songName: `P 2`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/9.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -119,7 +119,7 @@ const songs = [
   {
     id: '10', 
     songName: `b 5`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/10.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -131,8 +131,8 @@ const songs = [
   },
   {
     id: '11', 
-    songName: `p 5`,
-    poster: "assets/images/5.png",
+    songName: `p 3`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/11.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -144,8 +144,8 @@ const songs = [
   },
   {
     id: '12', 
-    songName: `s 6`,
-    poster: "assets/images/5.png",
+    songName: `s 4`,
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/12.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -157,8 +157,8 @@ const songs = [
   },
   {
     id: '13', 
-    songName: `p 6`,
-    poster: "assets/images/5.png",
+    songName: `p 4`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/13.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -170,8 +170,8 @@ const songs = [
   },
   {
     id: '14', 
-    songName: `p 7`,
-    poster: "assets/images/5.png",
+    songName: `p 5`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/14.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -184,7 +184,7 @@ const songs = [
   {
     id: '15', 
     songName: `b 6`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/15.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -196,8 +196,8 @@ const songs = [
   },
   {
     id: '16', 
-    songName: `guitar beats`,
-    poster: "assets/images/5.png",
+    songName: `g 1`,
+    poster: "assets/images/g.png",
     genre: "guitar beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/16.mp3",
     buyButton: { text: "Придбати від", minPrice: 29 },
@@ -209,8 +209,8 @@ const songs = [
   },
   {
     id: '17', 
-    songName: `g 2`,
-    poster: "assets/images/5.png",
+    songName: `g 1`,
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/17.mp3",
     buyButton: { text: "Придбати від", minPrice: 49 },
@@ -222,8 +222,8 @@ const songs = [
   },
   {
     id: '18', 
-    songName: `b 6`,
-    poster: "assets/images/5.png",
+    songName: `b 7`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/18.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -235,8 +235,8 @@ const songs = [
   },
   {
     id: '19', 
-    songName: `g 3`,
-    poster: "assets/images/5.png",
+    songName: `g 2`,
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/19.mp3",
     buyButton: { text: "Придбати від", minPrice: 39 },
@@ -248,8 +248,8 @@ const songs = [
   },
   {
     id: '20', 
-    songName: `s 7`,
-    poster: "assets/images/5.png",
+    songName: `s 5`,
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/20.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -261,8 +261,8 @@ const songs = [
   },
   {
     id: '21', 
-    songName: `b 7`,
-    poster: "assets/images/5.png",
+    songName: `b 8`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/21.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -274,8 +274,8 @@ const songs = [
   },
   {
     id: '22', 
-    songName: `p 7`,
-    poster: "assets/images/5.png",
+    songName: `p 6`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/22.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -288,7 +288,7 @@ const songs = [
   {
     id: '23', 
     songName: `St 1`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/st.png",
     genre: "Strings beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/23.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -301,7 +301,7 @@ const songs = [
   {
     id: '24', 
     songName: `St 2`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/st.png",
     genre: "Strings beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/24.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -313,8 +313,8 @@ const songs = [
   },
   {
     id: '25', 
-    songName: `g 4`,
-    poster: "assets/images/5.png",
+    songName: `g 3`,
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/25.mp3",
     buyButton: { text: "Придбати від", minPrice: 39 },
@@ -326,8 +326,8 @@ const songs = [
   },
   {
     id: '26', 
-    songName: `guitar beats`,
-    poster: "assets/images/5.png",
+    songName: `g 2`,
+    poster: "assets/images/g.png",
     genre: "guitar beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/26.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -339,8 +339,8 @@ const songs = [
   },
   {
     id: '27', 
-    songName: `g 5`,
-    poster: "assets/images/5.png",
+    songName: `g 4`,
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/27.mp3",
     buyButton: { text: "Придбати від", minPrice: 49 },
@@ -352,8 +352,8 @@ const songs = [
   },
   {
     id: '28', 
-    songName: `g 6`,
-    poster: "assets/images/5.png",
+    songName: `g 5`,
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/28.mp3",
     buyButton: { text: "Придбати від", minPrice: 39 },
@@ -365,8 +365,8 @@ const songs = [
   },
   {
     id: '29', 
-    songName: `b 8`,
-    poster: "assets/images/5.png",
+    songName: `b 9`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/29.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -378,8 +378,8 @@ const songs = [
   },
   {
     id: '30', 
-    songName: `guitar beats`,
-    poster: "assets/images/5.png",
+    songName: `g 3`,
+    poster: "assets/images/g.png",
     genre: "guitar beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/30.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -391,8 +391,8 @@ const songs = [
   },
   {
     id: '31', 
-    songName: `B 9`,
-    poster: "assets/images/5.png",
+    songName: `B 10`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/31.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -404,8 +404,8 @@ const songs = [
   },
   {
     id: '32', 
-    songName: `s 8`,
-    poster: "assets/images/5.png",
+    songName: `s 6`,
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/32.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -417,9 +417,9 @@ const songs = [
   },
   {
     id: '33', 
-    songName: `guitar beats`,
-    poster: "assets/images/5.png",
-    genre: "guitar beats  ",
+    songName: `g 4`,
+    poster: "assets/images/g.png",
+    genre: "guitar beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/33.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
     licenses: [
@@ -430,8 +430,8 @@ const songs = [
   },
   {
     id: '34', 
-    songName: `g 7`,
-    poster: "assets/images/5.png",
+    songName: `g 6`,
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/34.mp3",
     buyButton: { text: "Придбати від", minPrice: 39 },
@@ -442,22 +442,9 @@ const songs = [
     ]
   },
   {
-    id: '35', 
-    songName: `delete`,
-    poster: "assets/images/5.png",
-    genre: "this beat",
-    url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/0.mp3",
-    buyButton: { text: "Придбати від", minPrice: 10 },
-    licenses: [
-      { type: "lease", name: "WAV Lease", price: 10, description: "Базові права" },
-      { type: "exclusive", name: "WAV Exclusive", price: 20, description: "Ексклюзивні права" },
-      { type: "trackout", name: "Track Out Exclusive", price: 50, description: "Всі треки + ексклюзив" }
-    ]
-  },
-  {
     id: '36', 
-    songName: `b 10`,
-    poster: "assets/images/5.png",
+    songName: `b 11`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/36.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -469,8 +456,8 @@ const songs = [
   },
   {
     id: '37', 
-    songName: `b 11`,
-    poster: "assets/images/5.png",
+    songName: `b 12`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/37.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -482,8 +469,8 @@ const songs = [
   },
   {
     id: '38', 
-    songName: `b 12`,
-    poster: "assets/images/5.png",
+    songName: `b 13`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/38.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -495,8 +482,8 @@ const songs = [
   },
   {
     id: '39', 
-    songName: `guitar beats`,
-    poster: "assets/images/5.png",
+    songName: `g 5`,
+    poster: "assets/images/g.png",
     genre: "guitar beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/39.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -509,7 +496,7 @@ const songs = [
   {
     id: '40', 
     songName: `g 7`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/40.mp3",
     buyButton: { text: "Придбати від", minPrice: 49 },
@@ -522,7 +509,7 @@ const songs = [
   {
     id: '41', 
     songName: `g 8`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/41.mp3",
     buyButton: { text: "Придбати від", minPrice: 35 },
@@ -534,8 +521,8 @@ const songs = [
   },
   {
     id: '42', 
-    songName: `s 9`,
-    poster: "assets/images/5.png",
+    songName: `s 7`,
+    poster: "assets/images/s.png",
     genre: "Sample beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/42.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
@@ -548,7 +535,7 @@ const songs = [
   {
     id: '43', 
     songName: `g 9`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/43.mp3",
     buyButton: { text: "Придбати від", minPrice: 35 },
@@ -560,8 +547,8 @@ const songs = [
   },
   {
     id: '44', 
-    songName: `b 13`,
-    poster: "assets/images/5.png",
+    songName: `b 14`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/44.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -574,7 +561,7 @@ const songs = [
   {
     id: '45', 
     songName: `g 10`,
-    poster: "assets/images/5.png",
+    poster: "assets/images/gb.png",
     genre: "Golden beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/45.mp3",
     buyButton: { text: "Придбати від", minPrice: 25 },
@@ -586,8 +573,8 @@ const songs = [
   },
   {
     id: '46', 
-    songName: `p 9`,
-    poster: "assets/images/5.png",
+    songName: `p 7`,
+    poster: "assets/images/p.png",
     genre: "Piano beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/46.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
@@ -599,8 +586,8 @@ const songs = [
   },
   {
     id: '47', 
-    songName: `b 14`,
-    poster: "assets/images/5.png",
+    songName: `b 15`,
+    poster: "assets/images/b.png",
     genre: "Basic beats",
     url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/47.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },

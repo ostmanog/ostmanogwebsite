@@ -8,6 +8,12 @@
     src: url('../assets/fonts/Ramona-Bold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Belepotan';
+    src: url('../assets/fonts/Belepotan Rus.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 html, body {
     overflow-x: hidden;
@@ -301,6 +307,7 @@ h1:last-of-type {
   margin-top: 30px;
 }
 
+
 .image-container {
   position: relative;
   text-align: center;
@@ -366,6 +373,11 @@ h1:last-of-type {
   margin-right: 5px;
 }
 
+
+.lang-en .buy-text,
+.lang-de .buy-text {
+  letter-spacing: 2.5px;
+}
 
 
 .price {
@@ -1969,3 +1981,92 @@ h1:last-of-type {
   }
 }
 
+
+@media (max-width: 768px) {
+  .license-name {
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.2 !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+  
+  .license-option[data-license="exclusive"] .license-name,
+  .license-option[data-license="trackout"] .license-name {
+    white-space: pre-line !important;
+  }
+  
+  .license-info {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .license-price {
+    flex-shrink: 0 !important;
+    margin-left: 10px !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+  }
+  
+  .mobile-break {
+    display: inline;
+  }
+  
+  .license-option {
+    padding: 14px 12px !important;
+    min-height: 60px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+  .license-name {
+    font-size: 13px !important;
+  }
+  
+  .license-price {
+    font-size: 13px !important;
+    margin-left: 8px !important; 
+  }
+  
+  .license-desc {
+    font-size: 10px !important;
+  }
+  
+  /* Еще более компактные отступы */
+  .license-option {
+    padding: 12px 10px !important;
+    min-height: 55px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-options {
+    width: 100% !important;
+  }
+  
+  .license-option {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .license-info {
+    position: relative !important;
+  }
+  
+  .license-price {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+  }
+  
+  .license-name {
+    padding-right: 50px !important; 
+  }
+}

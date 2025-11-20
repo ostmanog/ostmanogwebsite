@@ -232,10 +232,12 @@ contactHint.innerHTML = `
     
 function getGenreDisplayName(genre) {
   const genreMap = {
-    'trap': 'Trap',
-    'rap': 'Rap',
-    'boom-bap': 'Boom Bap', 
-    'old school': 'Old School'
+    'Basic beats': 'Basic Beats',
+    'Sample beats': 'Sample Beats', 
+    'Piano beats': 'Piano Beats',
+    'guitar beats': 'guitar Beats',
+    'Strings beats': 'Strings Beats',
+    'Golden beats': 'Golden Beats'
   };
   return genreMap[genre] || genre;
 }
@@ -400,9 +402,12 @@ function updateTrackInfo(index) {
 
 function getTrackTypeText(genre) {
   const types = {
-    'trap': 'Trap Beat',
-    'rap': 'Rap Beat', 
-    'boom-bap': 'Boom Bap Beat'
+    'Basic beats': 'Basic Beat',
+    'Sample beats': 'Sample Beat',
+    'Piano beats': 'Piano Beat',
+    'guitar beats': 'guitar Beat',
+    'Strings beats': 'Strings Beat',
+    'Golden beats': 'Golden Beat'
   };
   return types[genre] || 'Beat';
 }
@@ -715,10 +720,13 @@ const translations = {
   ua: {
     "instrumentals": "instrumentals",
     "Жанри": "Жанри",
-    "Усі бити": "Усі бити",
-    "Треп": "Треп", 
-    "Реп": "Реп",
-    "Бум-беп": "Бум-беп",
+    "All Beats": "All Beats",
+    "Basic beats": "Basic beats",
+    "Sample beats": "Sample beats", 
+    "Piano beats": "Piano beats",
+    "guitar beats": "guitar beats",
+    "Strings beats": "Strings beats",
+    "Golden beats": "Golden beats",
     "Придбати від": "Придбати від",
     "Базові права": "Базові права",
     "Ексклюзивні права": "Ексклюзивні права",
@@ -750,10 +758,13 @@ const translations = {
   en: {
     "instrumentals": "instrumentals", 
     "Жанри": "Genres",
-    "Усі бити": "All Beats",
-    "Треп": "Trap",
-    "Реп": "Rap",
-    "Бум-беп": "Boom Bap",
+    "All Beats": "All Beats",
+    "Basic beats": "Basic beats",
+    "Sample beats": "Sample beats", 
+    "Piano beats": "Piano beats",
+    "guitar beats": "guitar beats",
+    "Strings beats": "Strings beats",
+    "Golden beats": "Golden beats",
     "Придбати від": "Buy from",
     "Базові права": "Basic rights",
     "Ексклюзивні права": "Exclusive rights", 
@@ -786,9 +797,12 @@ const translations = {
     "instrumentals": "instrumentals",
     "Жанри": "Genres", 
     "Усі бити": "Alle Beats",
-    "Треп": "Trap",
-    "Реп": "Rap",
-    "Бум-беп": "Boom Bap",
+    "Basic beats": "Basic beats",
+    "Sample beats": "Sample beats", 
+    "Piano beats": "Piano beats",
+    "guitar beats": "guitar beats",
+    "Strings beats": "Strings beats",
+    "Golden beats": "Golden beats",
     "Придбати від": "Kaufen ab",
     "Базові права": "Basisrechte",
     "Ексклюзивні права": "Exklusivrechte",
@@ -820,6 +834,9 @@ const translations = {
 };
 
 function changeLanguage(lang) {
+  document.body.classList.remove('lang-ua', 'lang-en', 'lang-de');
+  document.body.classList.add(`lang-${lang}`);
+  
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.remove('active');
   });
