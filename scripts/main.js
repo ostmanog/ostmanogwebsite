@@ -996,7 +996,7 @@ document.head.appendChild(style);
                 document.body.innerHTML = `
                     <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0a0a0a; color: white; font-family: Arial, sans-serif;">
                         <div style="text-align: center; padding: 20px;">
-                            <h1 style="color: #ff4444; margin-bottom: 20px;">🚫 Инструменты разработчика отключены</h1>
+                            <h1 style="color: #ff4444; margin-bottom: 50px;">🚫 Инструменты разработчика отключены</h1>
                             <p>В целях безопасности использование DevTools запрещено.</p>
                             <p style="color: #888; margin-top: 20px; font-size: 14px;">Oksyol Prod Security System</p>
                         </div>
@@ -1042,3 +1042,24 @@ document.head.appendChild(style);
     }
     
 })();
+
+function updateLanguageButtonPosition() {
+  const languageBtn = document.querySelector('.floating-language');
+  const player = document.querySelector('.new-player');
+  
+  if (player && !player.classList.contains('hidden')) {
+    languageBtn.style.bottom = '90px';
+  } else {
+    languageBtn.style.bottom = '40px';
+  }
+}
+
+music.addEventListener('play', () => {
+  setTimeout(updateLanguageButtonPosition, 100);
+});
+
+music.addEventListener('pause', () => {
+  setTimeout(updateLanguageButtonPosition, 100);
+});
+
+window.addEventListener('resize', updateLanguageButtonPosition);
