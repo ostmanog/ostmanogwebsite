@@ -912,3 +912,133 @@ const style = document.createElement('style');
 style.textContent = mobileFixCSS;
 document.head.appendChild(style);
 
+(function() {
+    'use strict';
+    
+    function isLocalHost() {
+        const hostname = window.location.hostname;
+        const protocol = window.location.protocol;
+        
+        if (protocol === 'file:') return true;
+        if (hostname === '') return true;
+        if (hostname === 'localhost') return true;
+        if (hostname === '127.0.0.1') return true;
+        if (hostname.startsWith('192.168.')) return true;
+        if (hostname.startsWith('10.0.')) return true;
+        if (hostname.startsWith('172.')) return true;
+        if (hostname.endsWith('.local')) return true;
+        
+        return false;
+    }
+    
+    const isLocal = isLocalHost();
+    
+    if (!isLocal) {
+        console.log('🔒 Активирована защита Oksyol Production');
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            if (e.ctrlKey && e.key === 'U') {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            if (e.ctrlKey && e.key === 'S') {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            if (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        }, true);
+        
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }, true);
+        
+        
+        function detectDevTools() {
+            const start = Date.now();
+            debugger;
+            const end = Date.now();
+            
+            if (end - start > 100) {
+                document.body.innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0a0a0a; color: white; font-family: Arial, sans-serif;">
+                        <div style="text-align: center; padding: 20px;">
+                            <h1 style="color: #ff4444; margin-bottom: 20px;">🚫 Инструменты разработчика отключены</h1>
+                            <p>В целях безопасности использование DevTools запрещено.</p>
+                            <p style="color: #888; margin-top: 20px; font-size: 14px;">Oksyol Prod Security System</p>
+                        </div>
+                    </div>
+                `;
+                setInterval(() => { debugger; }, 100);
+            }
+        }
+        
+        setInterval(detectDevTools, 1000);
+        
+        const originalConsole = {
+            log: console.log,
+            warn: console.warn,
+            error: console.error,
+            info: console.info,
+            debug: console.debug
+        };
+        
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+        console.info = function() {};
+        console.debug = function() {};
+        console.clear = function() {};
+        
+        Object.defineProperty(window, 'console', {
+            get: function() {
+                return {
+                    log: function() {},
+                    warn: function() {},
+                    error: function() {},
+                    info: function() {},
+                    debug: function() {},
+                    clear: function() {}
+                };
+            },
+            set: function() {}
+        });
+        
+    } else {
+        console.log('🔓 Локальный режим - все инструменты доступны');
+    }
+    
+})();
