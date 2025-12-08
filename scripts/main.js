@@ -270,7 +270,7 @@ function initBeatInteractions() {
         const licenseName = this.querySelector('.license-name').textContent;
         const beatTitle = dropdown.closest('.image-info-container').querySelector('.title').textContent;
         
-        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}$)`;
+        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}€)`;
         const encodedMessage = encodeURIComponent(message);
         const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
         
