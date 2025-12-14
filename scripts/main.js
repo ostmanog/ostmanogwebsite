@@ -270,7 +270,11 @@ function initBeatInteractions() {
         const licenseName = this.querySelector('.license-name').textContent;
         const beatTitle = dropdown.closest('.image-info-container').querySelector('.title').textContent;
         
-        const message = `Привіт! Хочу придбати біт "${beatTitle}"\nЛицензия: ${licenseName} (${price}€)`;
+        // Получаем текущий выбранный язык
+        const currentLanguage = localStorage.getItem('preferredLanguage') || 'ua';
+        
+        // Генерируем сообщение на нужном языке
+        const message = getTelegramMessage(beatTitle, licenseName, price, currentLanguage);
         const encodedMessage = encodeURIComponent(message);
         const telegramUrl = `https://t.me/sixbmxbo?text=${encodedMessage}`;
         
@@ -315,7 +319,15 @@ function filterBeats(genre) {
 }
 
 
-
+function getTelegramMessage(beatTitle, licenseName, price, language) {
+  const messages = {
+    ua: `Привіт! Хочу придбати біт "${beatTitle}"\nЛіцензія: ${licenseName} (${price}€)`,
+    en: `Hello! I want to purchase the beat "${beatTitle}"\nLicense: ${licenseName} (${price}€)`,
+    de: `Hallo! Ich möchte den Beat "${beatTitle}" kaufen\nLizenz: ${licenseName} (${price}€)`
+  };
+  
+  return messages[language] || messages.ua;
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.genre-filter');
