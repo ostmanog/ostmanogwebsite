@@ -4,7 +4,7 @@ const songs = [
     songName: `B 1`,
     poster: "assets/images/b.png",
     genre: "Basic beats",
-    url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/1.mp3",
+    url: "assets/beats/1.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
     licenses: [
       { type: "lease", name: "WAV Lease", price: 15, description: "Базові права" },
@@ -17,7 +17,7 @@ const songs = [
     songName: `P 1`,
     poster: "assets/images/p.png",
     genre: "Piano beats",
-    url: "https://raw.githubusercontent.com/ostmanog/ostmanogwebsite/main/assets/beats/2.mp3",
+    url: "https://ostmanog.github.io/ostmanogwebsite/assets/beats/2.mp3",
     buyButton: { text: "Придбати від", minPrice: 19 },
     licenses: [
       { type: "lease", name: "WAV Lease", price: 19, description: "Базові права" },
