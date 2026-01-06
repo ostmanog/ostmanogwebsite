@@ -4,7 +4,7 @@ const songs = [
     songName: `B 1`,
     poster: "assets/images/b.png",
     genre: "Basic beats",
-    url: "assets/beats/1.mp3",
+    url: "https://ostmanog.com/assets/beats/1.mp3",
     buyButton: { text: "Придбати від", minPrice: 15 },
     licenses: [
       { type: "lease", name: "WAV Lease", price: 15, description: "Базові права" },
